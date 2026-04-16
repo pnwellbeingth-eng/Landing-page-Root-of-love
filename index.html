@@ -1477,30 +1477,6 @@ footer p { color:var(--tx-dim); font-size:12.5px; line-height:1.9; }
         <li><span class="ck2">✓</span><span>ส่งทาง Email ทันที อ่านได้ทุก Device ไม่มีหมดอายุ</span></li>
       </ul>
 
-      <!-- ═══ ORDER BUMP — checkbox ก่อนจ่ายเงิน ═══ -->
-      <div style="background:rgba(201,144,122,.07);border:2px dashed rgba(201,144,122,.45);border-radius:14px;padding:18px 20px;margin-bottom:16px;">
-        <label for="addonCheck" style="display:flex;align-items:flex-start;gap:14px;cursor:pointer;">
-          <input type="checkbox" id="addonCheck"
-            style="width:22px;height:22px;margin-top:2px;accent-color:var(--g1);flex-shrink:0;cursor:pointer;"
-            onchange="updateCheckoutTotal()">
-          <img src="หน้าปก Sex Talk cover.png" alt="คู่มือคุยกับแฟน"
-            style="width:65px;height:auto;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.5);flex-shrink:0;margin-top:2px;">
-          <div>
-            <div style="font-family:'Noto Serif Thai',serif;font-size:clamp(14px,3.5vw,16px);font-weight:800;color:var(--tx-bright);line-height:1.4;margin-bottom:5px;">"คู่มือคุยกับแฟน เมื่อรู้สึกว่าเรื่อง Sex มีปัญหา"</div>
-            <div style="font-size:13px;color:var(--tx-mid);line-height:1.6;margin-bottom:8px;">โดยหมอวอป · E-Book · ส่งพร้อมกัน ทาง Email ทันที</div>
-            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-              <span style="font-size:13px;color:var(--tx-dim);text-decoration:line-through;">ราคาปกติ 390 บาท</span>
-              <span style="background:var(--g1);color:var(--w1);font-weight:800;font-size:12.5px;padding:3px 12px;border-radius:20px;">เพิ่มแค่ 99 บาท</span>
-            </div>
-          </div>
-        </label>
-      </div>
-
-      <!-- Total display (อัปเดตเมื่อติ๊ก checkbox) -->
-      <div style="text-align:center;margin-bottom:16px;font-size:14px;color:var(--tx-mid);">
-        ยอดรวม: <strong id="totalDisplay" style="color:var(--tx-bright);font-size:17px;">596 บาท</strong>
-      </div>
-
       <div class="deadline-box" style="margin-bottom:22px;">
         <div class="dl-icon">📅</div>
         <div>
@@ -1634,24 +1610,11 @@ function scrollBuy(){
   else { document.getElementById('buy').scrollIntoView({behavior:'smooth'}); }
 }
 
-// ─── Stripe Checkout ──────────────────────────────────────────
-let addonSelected = false;
-
-function updateCheckoutTotal(){
-  addonSelected = document.getElementById('addonCheck').checked;
-  const total = addonSelected ? 695 : 596;
-  const el = document.getElementById('totalDisplay');
-  if(el) el.textContent = total.toLocaleString('th-TH') + ' บาท';
-}
-
+// ─── Checkout Flow ──────────────────────────────────────────
 function startCheckout(){
-  const EBOOK_URL  = 'https://buy.stripe.com/8x214g0ch3yJ8Qi3FM6Zy00';
-  const BUNDLE_URL = 'https://buy.stripe.com/5kQ14ggbf1qBd6yb8e6Zy01';
-
   const btn = document.getElementById('mainBuyBtn');
-  if(btn){ btn.textContent = '⏳ กำลังเปิด checkout...'; btn.disabled = true; btn.style.opacity = '0.7'; }
-
-  window.location.href = addonSelected ? BUNDLE_URL : EBOOK_URL;
+  if(btn){ btn.textContent = '⏳ กำลังโหลด...'; btn.disabled = true; btn.style.opacity = '0.7'; }
+  window.location.href = 'checkout.html';
 }
 
 // FAQ accordion

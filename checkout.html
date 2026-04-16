@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รับ E-Book — Root of Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Noto+Serif+Thai:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --w1: #0A1628; --w2: #0F2035; --w3: #152843; --w4: #1E3455;
+  --g1: #C9907A; --g2: #D4A898; --g3: #DFBAB0; --g4: #EDD5CE;
+  --t2: #3D6450; --t3: #527A65; --t4: #7D9E8B;
+  --tx-bright: #FAFCFF;
+  --tx-mid: rgba(250,252,255,0.72);
+  --tx-dim: rgba(250,252,255,0.42);
+  --tx-faint: rgba(250,252,255,0.14);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Sarabun',sans-serif;
+  background: var(--w1);
+  color: var(--tx-bright);
+  font-size:17px;
+  line-height:1.85;
+  min-height:100vh;
+}
+
+/* ─── Top bar ─── */
+.top-bar {
+  height:3px;
+  background: linear-gradient(90deg,var(--t3) 0%,var(--g1) 40%,var(--w4) 70%,var(--t3) 100%);
+  background-size:200%;
+  animation: bar-flow 5s linear infinite;
+}
+@keyframes bar-flow { to { background-position:200% 0; } }
+
+/* ─── Nav ─── */
+.nav {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 20px;
+  border-bottom:1px solid var(--tx-faint);
+  background:var(--w1);
+}
+.nav-back {
+  font-size:14px; color:var(--tx-dim);
+  text-decoration:none;
+  display:flex; align-items:center; gap:6px;
+  transition:color .2s;
+}
+.nav-back:hover { color:var(--g2); }
+.nav-brand {
+  font-family:'Noto Serif Thai',serif;
+  font-size:15px; font-weight:700;
+  color:var(--g2);
+}
+.nav-secure {
+  font-size:12px; color:var(--tx-dim);
+  display:flex; align-items:center; gap:5px;
+}
+
+/* ─── Main container ─── */
+.container {
+  max-width:520px;
+  margin:0 auto;
+  padding:32px 20px 80px;
+}
+
+/* ─── Step label ─── */
+.step-label {
+  font-size:12px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--t4);
+  font-weight:600;
+  margin-bottom:8px;
+  text-align:center;
+}
+
+/* ─── Section title ─── */
+.sec-title {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(20px,5vw,26px);
+  font-weight:700;
+  text-align:center;
+  line-height:1.4;
+  margin-bottom:24px;
+  color:var(--tx-bright);
+}
+.gold { color:var(--g1); }
+
+/* ─── Price card ─── */
+.price-card {
+  background: var(--w2);
+  border:1px solid rgba(201,144,122,.18);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 16px 60px rgba(0,0,0,.5);
+  margin-bottom:20px;
+}
+.price-top {
+  background: linear-gradient(160deg,var(--w3) 0%,var(--w2) 100%);
+  padding:28px 24px;
+  text-align:center;
+  border-bottom:1px solid rgba(201,144,122,.1);
+}
+.price-label {
+  font-size:12px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--t4);
+  margin-bottom:6px;
+}
+.price-name {
+  font-family:'Noto Serif Thai',serif;
+  font-size:22px;
+  font-weight:700;
+  color:var(--tx-bright);
+  margin-bottom:14px;
+}
+.price-struck {
+  font-size:13px;
+  color:var(--tx-dim);
+  text-decoration:line-through;
+  margin-bottom:4px;
+}
+.price-main {
+  font-family:'Noto Serif Thai',serif;
+  font-size:52px;
+  font-weight:900;
+  color:var(--g1);
+  line-height:1;
+}
+.price-unit {
+  font-size:14px;
+  color:var(--tx-mid);
+  margin-top:4px;
+}
+.price-save {
+  display:inline-block;
+  margin-top:10px;
+  background:rgba(82,122,101,.25);
+  color:var(--t4);
+  font-size:12.5px;
+  font-weight:600;
+  padding:4px 14px;
+  border-radius:20px;
+  border:1px solid rgba(125,158,139,.3);
+}
+
+.price-body { padding:22px 24px; }
+
+/* ─── What you get ─── */
+.price-list {
+  list-style:none;
+  margin-bottom:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.price-list li {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:15px;
+  color:var(--tx-mid);
+  line-height:1.6;
+}
+.ck2 {
+  color:var(--t4);
+  font-weight:700;
+  font-size:16px;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.hl { color:var(--tx-bright); font-weight:600; }
+
+/* ─── Addon box ─── */
+.addon-box {
+  background:rgba(201,144,122,.07);
+  border:2px dashed rgba(201,144,122,.45);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-bottom:16px;
+  cursor:pointer;
+  transition:background .2s;
+}
+.addon-box:hover { background:rgba(201,144,122,.11); }
+.addon-label {
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  cursor:pointer;
+}
+.addon-label input[type=checkbox] {
+  width:22px; height:22px;
+  margin-top:2px;
+  accent-color:var(--g1);
+  flex-shrink:0;
+  cursor:pointer;
+}
+.addon-title {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(14px,3.5vw,16px);
+  font-weight:800;
+  color:var(--tx-bright);
+  line-height:1.4;
+  margin-bottom:5px;
+}
+.addon-sub {
+  font-size:13px;
+  color:var(--tx-mid);
+  line-height:1.6;
+  margin-bottom:8px;
+}
+.addon-price-row {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.addon-struck {
+  font-size:13px;
+  color:var(--tx-dim);
+  text-decoration:line-through;
+}
+.addon-badge {
+  background:var(--g1);
+  color:var(--w1);
+  font-weight:800;
+  font-size:12.5px;
+  padding:3px 12px;
+  border-radius:20px;
+}
+
+/* ─── Total ─── */
+.total-row {
+  text-align:center;
+  margin-bottom:16px;
+  font-size:14px;
+  color:var(--tx-mid);
+}
+.total-row strong {
+  color:var(--tx-bright);
+  font-size:18px;
+}
+
+/* ─── Deadline box ─── */
+.deadline-box {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  background:rgba(82,122,101,.12);
+  border:1px solid rgba(82,122,101,.2);
+  border-radius:12px;
+  padding:14px 16px;
+  margin-bottom:20px;
+}
+.dl-title { font-size:14px; font-weight:700; color:var(--t4); margin-bottom:2px; }
+.dl-count { font-size:13px; color:var(--g2); font-weight:600; }
+.dl-lose { font-size:12.5px; color:var(--tx-dim); margin-top:3px; }
+
+/* ─── Buy button ─── */
+.btn-buy {
+  width:100%;
+  padding:20px;
+  background: linear-gradient(135deg,var(--g1),var(--g3));
+  color:var(--w1);
+  border:none;
+  border-radius:14px;
+  font-family:'Sarabun',sans-serif;
+  font-size:clamp(16px,4vw,19px);
+  font-weight:800;
+  cursor:pointer;
+  line-height:1.4;
+  transition:all .2s ease;
+  box-shadow:0 8px 28px rgba(201,144,122,.35);
+  margin-bottom:14px;
+}
+.btn-buy:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 36px rgba(201,144,122,.45);
+}
+.btn-buy:active { transform:translateY(0); }
+.btn-buy:disabled { opacity:0.7; cursor:not-allowed; transform:none; }
+
+/* ─── Payment icons ─── */
+.pay-icons {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:18px;
+}
+.pay-ic {
+  font-size:13px;
+  color:var(--tx-dim);
+  background:var(--w3);
+  padding:5px 12px;
+  border-radius:20px;
+  border:1px solid var(--tx-faint);
+}
+
+/* ─── Guarantee ─── */
+.guar-box {
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  background:rgba(45,77,62,.15);
+  border:1px solid rgba(82,122,101,.2);
+  border-radius:12px;
+  padding:16px;
+}
+.guar-ic { font-size:26px; flex-shrink:0; }
+.guar-title { font-size:15px; font-weight:700; color:var(--t4); margin-bottom:4px; }
+.guar-text { font-size:13.5px; color:var(--tx-dim); line-height:1.7; }
+
+/* ─── Divider ─── */
+.divider {
+  border:none;
+  border-top:1px solid var(--tx-faint);
+  margin:22px 0;
+}
+
+/* ─── Trust row ─── */
+.trust-row {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.trust-item {
+  font-size:13px;
+  color:var(--tx-dim);
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<!-- Nav -->
+<nav class="nav">
+  <a href="index.html" class="nav-back">← กลับ</a>
+  <div class="nav-brand">Root of Love</div>
+  <div class="nav-secure">🔒 ชำระเงินปลอดภัย</div>
+</nav>
+
+<div class="container">
+
+  <div class="step-label">ขั้นตอนสุดท้าย</div>
+  <h1 class="sec-title">เลือกสิ่งที่<span class="gold">คุณต้องการ</span><br>แล้วรับ E-Book ได้เลย</h1>
+
+  <div class="price-card">
+
+    <!-- Top: Book cover + price -->
+    <div class="price-top">
+      <img src="หน้าปก root of  ove.png" alt="Root of Love E-Book"
+        style="width:140px;height:auto;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.65),0 0 0 1px rgba(201,144,122,.3);margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;">
+      <div class="price-label">คู่มือ E-Book</div>
+      <div class="price-name">Root of Love</div>
+      <div class="price-struck">ปรึกษาหมอ 1 ครั้ง ≈ 2,700–4,500 บาท</div>
+      <div class="price-main" id="priceDisplay">596</div>
+      <div class="price-unit">บาท · E-Book + Bonus PDF</div>
+      <div class="price-save">ประหยัดกว่าปรึกษาหมอ 87%</div>
+    </div>
+
+    <div class="price-body">
+
+      <!-- What you get -->
+      <ul class="price-list">
+        <li><span class="ck2">✓</span><span><span class="hl">E-Book หลัก</span> Root of Love — ฟื้นความรักจากวงจรทะเลาะซ้ำๆ</span></li>
+        <li><span class="ck2">✓</span><span><span class="hl">Bonus</span> PDF ประเมินสุขภาพความสัมพันธ์ (มูลค่า 390 บาท) <em style="color:var(--g2);font-style:normal">เฉพาะช่วง Promo</em></span></li>
+        <li><span class="ck2">✓</span><span>ส่งทาง Email ทันที อ่านได้ทุก Device ไม่มีหมดอายุ</span></li>
+      </ul>
+
+      <hr class="divider">
+
+      <!-- Addon checkbox -->
+      <div class="addon-box" onclick="document.getElementById('addonCheck').click()">
+        <label class="addon-label" onclick="event.stopPropagation()">
+          <input type="checkbox" id="addonCheck" onchange="updateTotal()">
+          <img src="หน้าปก Sex Talk cover.png" alt="คู่มือคุยกับแฟน"
+            style="width:65px;height:auto;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.5);flex-shrink:0;margin-top:2px;">
+          <div>
+            <div class="addon-title">"คู่มือคุยกับแฟน เมื่อรู้สึกว่าเรื่อง Sex มีปัญหา"</div>
+            <div class="addon-sub">โดยหมอวอป · E-Book · ส่งพร้อมกันทาง Email ทันที<br>
+              <span style="color:var(--g2);font-size:12.5px;">⚠️ ไม่มีจำหน่ายแยก — เพิ่มได้แค่ตอนนี้เท่านั้น</span>
+            </div>
+            <div class="addon-price-row">
+              <span class="addon-struck">ราคาปกติ 390 บาท</span>
+              <span class="addon-badge">เพิ่มแค่ 99 บาท</span>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <!-- Total -->
+      <div class="total-row">
+        ยอดรวม: <strong id="totalDisplay">596 บาท</strong>
+      </div>
+
+      <!-- Deadline -->
+      <div class="deadline-box">
+        <div style="font-size:22px;">📅</div>
+        <div>
+          <div class="dl-title">PDF ประเมินฯ ฟรี — หมด 29 เมษายน นี้</div>
+          <div class="dl-count" id="dlCount">กำลังคำนวณ...</div>
+          <div class="dl-lose">หลังจากนั้นยังซื้อ E-Book ได้ในราคาเดิม แต่ไม่ได้ของแถมแล้วค่ะ</div>
+        </div>
+      </div>
+
+      <!-- Buy button -->
+      <button class="btn-buy" id="buyBtn" onclick="goCheckout()">
+        ✓ ใช่! ฉันต้องการหยุดวงจรนี้ — รับ E-Book เลย
+      </button>
+
+      <!-- Payment icons -->
+      <div class="pay-icons">
+        <span class="pay-ic">💳 บัตรเครดิต</span>
+        <span class="pay-ic">🔵 Google Pay</span>
+        <span class="pay-ic">📱 PromptPay</span>
+      </div>
+
+      <!-- Guarantee -->
+      <div class="guar-box">
+        <div class="guar-ic">🛡️</div>
+        <div>
+          <div class="guar-title">รับประกันคืนเงิน 100%</div>
+          <div class="guar-text">อ่านจบแล้วรู้สึกว่าไม่ได้อะไรเลย ทักมาได้เลยครับ ผมคืนเงินให้เต็มจำนวน ไม่ถามเหตุผล ไม่โกรธกัน — ผมแบกรับความเสี่ยงตรงนี้ไว้เองครับ</div>
+        </div>
+      </div>
+
+      <!-- Trust -->
+      <div class="trust-row">
+        <div class="trust-item">🔒 SSL Secured</div>
+        <div class="trust-item">💳 Powered by Stripe</div>
+        <div class="trust-item">📧 ส่ง Email ทันที</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+const EBOOK_URL  = 'https://buy.stripe.com/8x214g0ch3yJ8Qi3FM6Zy00';
+const BUNDLE_URL = 'https://buy.stripe.com/5kQ14ggbf1qBd6yb8e6Zy01';
+const DEADLINE   = new Date('2026-04-29T23:59:59+07:00');
+
+let addonSelected = false;
+
+function updateTotal(){
+  addonSelected = document.getElementById('addonCheck').checked;
+  const total = addonSelected ? 695 : 596;
+  document.getElementById('totalDisplay').textContent = total.toLocaleString('th-TH') + ' บาท';
+  document.getElementById('priceDisplay').textContent = total.toLocaleString('th-TH');
+}
+
+function goCheckout(){
+  const btn = document.getElementById('buyBtn');
+  btn.textContent = '⏳ กำลังเปิด checkout...';
+  btn.disabled = true;
+  window.location.href = addonSelected ? BUNDLE_URL : EBOOK_URL;
+}
+
+// Countdown
+function updateCountdown(){
+  const now  = new Date();
+  const diff = DEADLINE - now;
+  if(diff <= 0){
+    document.getElementById('dlCount').textContent = 'หมดเวลาแล้วค่ะ';
+    return;
+  }
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  document.getElementById('dlCount').textContent =
+    `เหลืออีก ${d} วัน ${h} ชั่วโมง ${m} นาที`;
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+</script>
+
+</body>
+</html>
