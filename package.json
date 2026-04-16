@@ -1,0 +1,11 @@
+{
+  "name": "root-of-love",
+  "version": "1.0.0",
+  "description": "Root of Love — Landing Page & Sales Funnel by wLife Academy",
+  "dependencies": {
+    "stripe": "^14.21.0"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}

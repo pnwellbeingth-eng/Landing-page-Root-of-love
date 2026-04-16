@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Root of Love — หมอวอป ณัฎฐชัย</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Noto+Serif+Thai:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+/*
+  BAZI COLOR SYSTEM — v3
+  น้ำ (Wealth)    = Deep Navy    → --w1/w2/w3
+  ทอง/Rose Gold   = Warm Copper  → --g1…g5  [Metal/Output]
+  ไม้/Sage Green  = Muted Sage   → --t1…t5  [Wood/Power]
+  ดิน (ห้ามใช้ dominant)
+*/
+:root {
+  --w1: #0A1628;
+  --w2: #0F2035;
+  --w3: #152843;
+  --w4: #1E3455;
+  --w5: #2A4570;
+
+  --g1: #C9907A;
+  --g2: #D4A898;
+  --g3: #DFBAB0;
+  --g4: #EDD5CE;
+  --g5: #FAF0EE;
+
+  --t1: #2D4D3E;
+  --t2: #3D6450;
+  --t3: #527A65;
+  --t4: #7D9E8B;
+  --t5: #A8C5B5;
+
+  --tx-bright: #FAFCFF;
+  --tx-mid: rgba(250,252,255,0.72);
+  --tx-dim: rgba(250,252,255,0.42);
+  --tx-faint: rgba(250,252,255,0.14);
+  --tx-dark: #0D1B2E;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:'Sarabun',sans-serif;
+  background: var(--w1);
+  color: var(--tx-bright);
+  font-size:17px;
+  line-height:1.85;
+  overflow-x:hidden;
+}
+
+/* ===== RAINBOW BAR ===== */
+.top-bar {
+  height:3px;
+  background: linear-gradient(90deg, var(--t3) 0%, var(--g1) 40%, var(--w4) 70%, var(--t3) 100%);
+  background-size:200%;
+  animation: bar-flow 5s linear infinite;
+}
+@keyframes bar-flow { to { background-position:200% 0; } }
+
+/* ===== STICKY CTA (mobile) ===== */
+.sticky {
+  position:fixed; bottom:0; left:0; right:0;
+  background: var(--w1);
+  border-top:1px solid rgba(201,144,122,0.2);
+  padding:10px 18px;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  z-index:998;
+  transform:translateY(100%);
+  transition:transform .3s ease;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.45);
+}
+.sticky.on { transform:translateY(0); }
+.sticky-txt { font-size:13px; color:var(--tx-mid); }
+.sticky-txt span { color:var(--g1); font-weight:700; }
+.sticky-btn {
+  background: linear-gradient(135deg,var(--g1),var(--g3));
+  color:var(--w1); font-family:'Sarabun',sans-serif;
+  font-weight:800; font-size:13px;
+  padding:10px 18px; border:none; border-radius:8px;
+  cursor:pointer; white-space:nowrap;
+}
+
+/* ===== SECTION BASE ===== */
+.sec { padding:68px 20px; }
+.inner { max-width:700px; margin:0 auto; }
+
+.badge {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:11.5px; font-weight:700; letter-spacing:1.2px;
+  text-transform:uppercase; margin-bottom:18px;
+  color:var(--t5);
+}
+.badge-dot { width:6px; height:6px; border-radius:50%; background:var(--t5); }
+
+h2.sec-title {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(26px,5.5vw,42px);
+  font-weight:900; line-height:1.3;
+  margin-bottom:14px;
+}
+h2.sec-title .gold { color:var(--g1); }
+h2.sec-title .teal { color:var(--t4); }
+
+.sec-lead { font-size:17px; color:var(--tx-mid); line-height:1.85; margin-bottom:36px; }
+
+/* ===== BUTTONS ===== */
+.btn-gold {
+  display:block;
+  background: linear-gradient(135deg,var(--g1),var(--g3));
+  color:var(--w1); font-family:'Sarabun',sans-serif;
+  font-weight:800; font-size:17px;
+  padding:18px 32px; border-radius:12px;
+  border:none; cursor:pointer;
+  text-align:center; text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 24px rgba(201,144,122,.3);
+  letter-spacing:.2px;
+}
+.btn-gold:hover { transform:translateY(-2px); box-shadow:0 8px 36px rgba(201,144,122,.45); }
+
+.btn-ghost {
+  display:block; background:transparent;
+  color:var(--tx-dim); font-size:14px;
+  text-align:center; padding:8px;
+  cursor:pointer; border:none;
+  font-family:'Sarabun',sans-serif;
+}
+.btn-ghost:hover { color:var(--tx-mid); }
+
+/* ===== TIMER ===== */
+.timer-row { display:flex; align-items:center; justify-content:center; gap:6px; }
+.t-box {
+  background:rgba(120,40,40,.75);
+  color:white; font-weight:800; font-size:20px;
+  padding:8px 12px; border-radius:6px;
+  min-width:46px; text-align:center;
+  font-variant-numeric:tabular-nums;
+}
+.t-sep { color:var(--tx-dim); font-weight:700; font-size:18px; }
+.t-lbl { font-size:10px; color:var(--tx-dim); text-align:center; margin-top:3px; }
+
+/* ===== HERO ===== */
+.hero {
+  background: var(--w1);
+  padding:72px 20px 64px;
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute; top:-40%; right:-15%;
+  width:55%; height:130%;
+  background:radial-gradient(ellipse,rgba(125,158,139,.10) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero::after {
+  content:'';
+  position:absolute; bottom:-30%; left:-10%;
+  width:50%; height:120%;
+  background:radial-gradient(ellipse,rgba(201,144,122,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero .inner { position:relative; z-index:1; }
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(125,158,139,.12);
+  border:1px solid rgba(125,158,139,.25);
+  padding:6px 14px; border-radius:100px;
+  font-size:12.5px; color:var(--t5);
+  margin-bottom:28px;
+}
+.hero-badge .live { width:7px;height:7px;border-radius:50%;background:var(--t5);animation:pulse-g 2s infinite; }
+@keyframes pulse-g { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+/* Scrolling voices */
+.voices-wrap {
+  margin-bottom:32px;
+  overflow:hidden;
+  position:relative;
+}
+.voices-track {
+  display:flex; gap:12px;
+  animation: voices-scroll 28s linear infinite;
+  width:max-content;
+}
+.voices-track:hover { animation-play-state:paused; }
+@keyframes voices-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.voice-pill {
+  display:inline-flex; align-items:flex-start; gap:8px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(201,144,122,.18);
+  border-radius:100px;
+  padding:8px 18px;
+  white-space:nowrap;
+  font-family:'Noto Serif Thai',serif;
+  font-size:14px;
+  color:var(--tx-mid);
+  font-style:italic;
+  flex-shrink:0;
+}
+.voice-pill .vq { color:var(--g2); font-size:16px; line-height:1; }
+
+.hero-h1 {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(30px,6.5vw,52px);
+  font-weight:900; line-height:1.25;
+  margin-bottom:10px; letter-spacing:-.5px;
+}
+.hero-h1 .gold { color:var(--g1); }
+
+.hero-sub {
+  font-size:clamp(15px,3vw,18px);
+  color:var(--tx-mid); margin-bottom:34px;
+  line-height:1.8;
+}
+.hero-sub strong { color:var(--tx-bright); }
+
+.earlybird {
+  background:rgba(201,144,122,.07);
+  border:1px solid rgba(201,144,122,.18);
+  border-radius:12px; padding:18px 22px;
+  margin-bottom:28px;
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+}
+.eb-left { flex:1; }
+.eb-title { color:var(--g1); font-weight:700; font-size:14.5px; margin-bottom:2px; }
+.eb-sub { color:var(--tx-dim); font-size:12.5px; }
+
+.hero-cta { display:flex; flex-direction:column; gap:10px; }
+.hero-trust {
+  display:flex; align-items:center; gap:7px;
+  color:var(--tx-dim); font-size:12.5px; margin-top:10px;
+}
+
+/* ===== PAIN SECTION ===== */
+.pain-sec { background: var(--w2); }
+
+.wop-block {
+  background:var(--w3);
+  border-radius:16px; padding:28px 32px;
+  margin-bottom:28px;
+  position:relative; overflow:hidden;
+}
+.wop-block::before {
+  content:'\201C';
+  position:absolute; top:8px; left:18px;
+  font-family:'Noto Serif Thai',serif;
+  font-size:96px; color:rgba(201,144,122,.10);
+  line-height:1; pointer-events:none;
+}
+.wop-block p {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(15.5px,3.2vw,18.5px);
+  line-height:1.9; position:relative; z-index:1;
+  color:var(--tx-mid); padding-left:12px;
+}
+.wop-block p em { color:var(--g2); font-style:italic; }
+.wop-block p strong { color:var(--tx-bright); }
+
+.wop-sig {
+  margin-top:20px; padding-top:16px;
+  border-top:1px solid var(--tx-faint);
+  display:flex; align-items:center; gap:12px;
+}
+.wop-avatar {
+  width:42px; height:42px; border-radius:50%;
+  background:var(--t2);
+  border:2px solid var(--g1);
+  display:flex; align-items:center; justify-content:center;
+  font-size:19px; flex-shrink:0;
+}
+.wop-name { font-weight:700; font-size:14.5px; color:var(--tx-bright); }
+.wop-role { font-size:12px; color:var(--tx-dim); }
+
+.pain-list { display:flex; flex-direction:column; gap:13px; margin-bottom:32px; }
+.pain-item {
+  display:flex; gap:14px; align-items:flex-start;
+  background:var(--w3);
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:12px; padding:18px 20px;
+  transition:border-color .2s, transform .15s;
+}
+.pain-item:hover { border-color:rgba(201,144,122,.2); transform:translateX(4px); }
+.px {
+  width:26px; height:26px; border-radius:50%;
+  background:rgba(130,50,50,.2);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; margin-top:2px;
+  color:#e88; font-weight:700; font-size:13px;
+}
+.pain-text { font-size:15.5px; color:var(--tx-mid); line-height:1.7; }
+.pain-text strong { color:var(--tx-bright); }
+
+.hope-line {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(20px,4.5vw,28px);
+  font-weight:700;
+  color:var(--tx-bright);
+  text-align:center;
+  padding:28px 20px;
+  border-top:1px solid var(--tx-faint);
+  border-bottom:1px solid var(--tx-faint);
+  margin-bottom:28px;
+  line-height:1.5;
+}
+.hope-line .g { color:var(--g1); }
+.hope-line .t { color:var(--t4); }
+
+.insight-box {
+  background: linear-gradient(135deg, var(--t1), var(--w3));
+  border:1px solid rgba(125,158,139,.25);
+  border-radius:16px; padding:28px 32px;
+}
+.insight-box p {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(15px,3.2vw,18px);
+  line-height:1.85; color:var(--tx-mid);
+}
+.insight-box p strong { color:var(--tx-bright); }
+.insight-box p em { color:var(--g2); font-style:normal; }
+
+/* ===== DIVORCE STATS SECTION ===== */
+.stats-sec { background: var(--w1); }
+.stat-intro {
+  font-size:16px; color:var(--tx-mid);
+  line-height:1.85; margin-bottom:32px;
+}
+.stat-intro strong { color:var(--tx-bright); }
+
+.stat-bars { display:flex; flex-direction:column; gap:12px; margin-bottom:28px; }
+.stat-row { display:flex; align-items:center; gap:14px; }
+.stat-yr { font-size:13px; color:var(--tx-dim); font-weight:600; min-width:42px; }
+.stat-track { flex:1; background:rgba(255,255,255,.06); border-radius:100px; height:32px; overflow:hidden; }
+.stat-fill {
+  height:100%; border-radius:100px;
+  background: linear-gradient(90deg, var(--t2), var(--g1));
+  display:flex; align-items:center; justify-content:flex-end; padding-right:14px;
+  transition:width 1s ease;
+  font-size:12.5px; font-weight:700; color:var(--w1);
+  white-space:nowrap;
+}
+.stat-note {
+  background:rgba(201,144,122,.06);
+  border-left:3px solid var(--g1);
+  border-radius:0 10px 10px 0;
+  padding:18px 22px;
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(15px,3.2vw,17.5px);
+  color:var(--tx-mid); line-height:1.8;
+}
+.stat-note strong { color:var(--tx-bright); }
+
+/* ===== WHY SECTION ===== */
+.why-sec { background: var(--w2); }
+
+.why-grid { display:flex; flex-direction:column; gap:16px; margin-top:32px; }
+.why-card {
+  background:var(--w3);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:12px; padding:22px 24px;
+  display:flex; gap:16px; align-items:flex-start;
+  transition:border-color .2s;
+}
+.why-card:hover { border-color:rgba(201,144,122,.2); }
+.why-icon {
+  width:44px; height:44px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; flex-shrink:0;
+}
+.wi-t { background:rgba(82,122,101,.15); }
+.wi-g { background:rgba(201,144,122,.12); }
+.wi-w { background:rgba(30,52,85,.5); border:1px solid rgba(255,255,255,.08); }
+.why-card-t { font-weight:700; font-size:15.5px; margin-bottom:5px; color:var(--tx-bright); }
+.why-card-b { font-size:14.5px; color:var(--tx-mid); line-height:1.7; }
+.why-card-b em { color:var(--g2); font-style:normal; font-weight:600; }
+
+/* ===== "สิ่งที่จะไม่เจอ" ===== */
+.notfound-sec { background: var(--w1); }
+.notfound-list { display:flex; flex-direction:column; gap:13px; margin-top:28px; }
+.nf-item {
+  display:flex; gap:14px; align-items:flex-start;
+  background:rgba(130,50,50,.07);
+  border:1px solid rgba(130,50,50,.15);
+  border-radius:12px; padding:18px 22px;
+}
+.nf-x {
+  width:26px; height:26px; border-radius:50%;
+  background:rgba(130,50,50,.2);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; margin-top:2px;
+  color:#e88; font-weight:700; font-size:13px;
+}
+.nf-text { font-size:15px; color:var(--tx-mid); line-height:1.7; }
+.nf-text strong { color:var(--tx-bright); }
+.nf-text em { color:var(--t5); font-style:normal; }
+
+/* ===== OFFER SECTION ===== */
+.offer-sec { background: var(--w2); }
+.offer-card {
+  background:var(--w3);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px; overflow:hidden;
+  margin-bottom:18px;
+}
+.offer-head {
+  padding:18px 22px;
+  background:rgba(255,255,255,.03);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+.offer-badge {
+  font-size:11px; font-weight:700; letter-spacing:.8px;
+  text-transform:uppercase;
+  padding:3px 10px; border-radius:100px;
+}
+.ob-main { background:rgba(201,144,122,.15); color:var(--g1); }
+.ob-bonus { background:rgba(82,122,101,.15); color:var(--t5); }
+.ob-urgent { background:rgba(130,50,50,.2); color:#e99; }
+.offer-title { font-weight:700; font-size:15px; flex:1; color:var(--tx-bright); }
+.offer-val { font-size:12px; color:var(--tx-dim); text-decoration:line-through; }
+.offer-body { padding:18px 22px; }
+.offer-body p { font-size:14.5px; color:var(--tx-mid); line-height:1.7; }
+.check-list { list-style:none; display:flex; flex-direction:column; gap:11px; margin-top:12px; }
+.check-list li {
+  display:flex; gap:11px; align-items:flex-start;
+  font-size:14.5px; color:var(--tx-mid); line-height:1.6;
+}
+.ck {
+  width:20px; height:20px;
+  background:rgba(82,122,101,.25);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; margin-top:2px;
+  color:var(--t5); font-size:11px; font-weight:700;
+}
+
+/* ===== BEFORE / AFTER ===== */
+.ba-sec { background: var(--w1); }
+.ba-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:540px){.ba-grid{grid-template-columns:1fr;}}
+.ba-card { border-radius:14px; padding:26px; border:1px solid; }
+.ba-before { background:rgba(130,50,50,.06); border-color:rgba(130,50,50,.18); }
+.ba-after  { background:rgba(82,122,101,.06); border-color:rgba(82,122,101,.2); }
+.ba-lbl { font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:7px; }
+.ba-before .ba-lbl { color:#e88; }
+.ba-after  .ba-lbl { color:var(--t5); }
+.ba-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.ba-list li { font-size:14px; color:var(--tx-mid); display:flex; gap:8px; line-height:1.5; }
+
+/* ===== TARGET ===== */
+.target-sec { background: var(--w2); }
+.target-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:540px){.target-grid{grid-template-columns:1fr;}}
+.target-card { border-radius:12px; padding:22px; border:1px solid; }
+.tc-yes { background:rgba(82,122,101,.06); border-color:rgba(82,122,101,.2); }
+.tc-no  { background:rgba(130,50,50,.05); border-color:rgba(130,50,50,.15); }
+.tc-title { font-weight:700; font-size:14px; margin-bottom:14px; display:flex; align-items:center; gap:7px; }
+.tc-yes .tc-title { color:var(--t5); }
+.tc-no .tc-title { color:#e88; }
+.tc-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.tc-list li { font-size:13.5px; color:var(--tx-mid); display:flex; gap:8px; line-height:1.5; }
+
+/* ===== AUTHOR ===== */
+.author-sec {
+  background: linear-gradient(180deg, var(--w1) 0%, var(--t1) 100%);
+  padding:72px 20px;
+}
+.author-head {
+  display:flex; gap:22px; align-items:flex-start;
+  margin-bottom:28px;
+}
+.author-ava {
+  width:76px; height:76px; border-radius:50%;
+  border:2.5px solid var(--g1);
+  background:var(--t2);
+  display:flex; align-items:center; justify-content:center;
+  font-size:34px; flex-shrink:0;
+}
+.author-name {
+  font-family:'Noto Serif Thai',serif;
+  font-size:21px; font-weight:700; margin-bottom:4px;
+}
+.author-role { color:var(--g1); font-size:13.5px; margin-bottom:3px; }
+.author-cred2 { color:var(--tx-dim); font-size:12px; }
+.author-story {
+  border-left:2px solid rgba(201,144,122,.3);
+  padding-left:22px;
+}
+.author-story p {
+  font-size:16px; color:var(--tx-mid);
+  line-height:1.9; margin-bottom:16px;
+}
+.author-story p:last-child { margin-bottom:0; }
+.author-story strong { color:var(--tx-bright); }
+.author-story em { color:var(--g2); font-style:normal; }
+
+/* ===== PRICING ===== */
+.price-sec { background: var(--w2); }
+.price-card {
+  background:var(--w3);
+  border-radius:20px;
+  border:1.5px solid rgba(201,144,122,.3);
+  overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,.5);
+}
+.price-top {
+  background: linear-gradient(135deg, var(--w1), var(--w2));
+  padding:36px 32px; text-align:center;
+  position:relative;
+}
+.price-top::after {
+  content:'';
+  position:absolute; bottom:-1px; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,var(--t3),var(--g1),var(--t3));
+}
+.price-label { font-size:11.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--tx-dim); margin-bottom:7px; }
+.price-name { font-family:'Noto Serif Thai',serif; font-size:22px; font-weight:700; margin-bottom:22px; }
+.price-struck { font-size:14px; color:var(--tx-dim); text-decoration:line-through; margin-bottom:4px; }
+.price-main { font-family:'Noto Serif Thai',serif; font-size:60px; font-weight:900; color:var(--g1); line-height:1; }
+.price-unit { font-size:17px; color:var(--tx-mid); margin-bottom:6px; }
+.price-save {
+  display:inline-block;
+  background:rgba(82,122,101,.2);
+  color:var(--t5);
+  font-size:12.5px; font-weight:700;
+  padding:4px 14px; border-radius:100px;
+  margin-top:6px;
+}
+.price-body { padding:32px; }
+
+.anchor-box {
+  background:var(--w2);
+  border-radius:14px; padding:22px 24px;
+  margin-bottom:24px;
+}
+.anchor-box .lbl { font-size:11.5px; letter-spacing:.5px; text-transform:uppercase; color:var(--tx-dim); margin-bottom:14px; }
+.anchor-row {
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:13.5px; padding:8px 0;
+  border-bottom:1px solid var(--tx-faint);
+}
+.anchor-row:last-of-type { border-bottom:none; }
+.anchor-row .lside { color:var(--tx-dim); }
+.anchor-row .rside { color:#e88; font-weight:700; text-decoration:line-through; }
+.anchor-highlight {
+  display:flex; justify-content:space-between; align-items:center;
+  margin-top:14px; padding-top:14px;
+  border-top:1px solid rgba(201,144,122,.2);
+}
+.anchor-highlight .lside { color:var(--tx-bright); font-weight:600; font-size:14.5px; }
+.anchor-highlight .rside {
+  font-family:'Noto Serif Thai',serif;
+  font-size:24px; font-weight:900; color:var(--g1);
+}
+.anchor-note { font-size:12px; color:var(--tx-dim); font-style:italic; margin-top:10px; line-height:1.6; }
+
+.price-list { list-style:none; display:flex; flex-direction:column; gap:13px; margin-bottom:24px; }
+.price-list li { display:flex; gap:11px; align-items:flex-start; font-size:15px; color:var(--tx-mid); line-height:1.6; }
+.price-list .ck2 { color:var(--t5); font-weight:700; flex-shrink:0; margin-top:2px; }
+.price-list .hl { color:var(--tx-bright); font-weight:600; }
+
+/* Order Bump */
+.order-bump {
+  background: linear-gradient(135deg, rgba(82,122,101,.12), rgba(201,144,122,.08));
+  border:1.5px dashed rgba(201,144,122,.3);
+  border-radius:14px; padding:20px 22px;
+  margin-bottom:22px;
+}
+.ob-head { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.ob-checkbox {
+  width:22px; height:22px; border:2px solid var(--g1);
+  border-radius:5px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; font-size:13px; color:transparent;
+  transition:background .2s;
+}
+.ob-checkbox.checked { background:var(--g1); color:var(--w1); }
+.ob-label { font-weight:700; font-size:14.5px; color:var(--tx-bright); cursor:pointer; }
+.ob-price { color:var(--g1); font-weight:700; }
+.ob-desc { font-size:13.5px; color:var(--tx-dim); line-height:1.65; padding-left:34px; }
+
+.timer-wrap2 { margin-bottom:22px; text-align:center; }
+.timer-wrap2 .lbl { font-size:12.5px; color:var(--tx-dim); margin-bottom:10px; }
+.btn-buy {
+  display:block; width:100%;
+  background:linear-gradient(135deg,var(--g1),var(--g3));
+  color:var(--w1);
+  font-family:'Sarabun',sans-serif;
+  font-weight:800; font-size:18px;
+  padding:20px 32px; border-radius:14px;
+  border:none; cursor:pointer;
+  text-align:center; text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+  box-shadow:0 4px 24px rgba(201,144,122,.35);
+  margin-bottom:14px;
+}
+.btn-buy:hover { transform:translateY(-2px); box-shadow:0 8px 36px rgba(201,144,122,.5); }
+
+.pay-icons { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:20px; }
+.pay-ic { background:var(--w2); padding:6px 12px; border-radius:8px; font-size:12.5px; font-weight:600; color:var(--tx-mid); }
+
+.guar-box {
+  background:rgba(82,122,101,.08);
+  border:1px solid rgba(82,122,101,.2);
+  border-radius:14px; padding:22px;
+  display:flex; gap:14px; align-items:flex-start;
+}
+.guar-ic { font-size:24px; flex-shrink:0; margin-top:2px; }
+.guar-title { font-weight:700; color:var(--t5); margin-bottom:5px; font-size:15px; }
+.guar-text { font-size:14px; color:var(--tx-mid); line-height:1.7; }
+
+/* ===== FAQ ===== */
+.faq-sec { background: var(--w1); }
+.faq-wrap { display:flex; flex-direction:column; }
+.faq-item { border-bottom:1px solid var(--tx-faint); overflow:hidden; }
+.faq-item:first-child { border-top:1px solid var(--tx-faint); }
+.faq-q {
+  width:100%; background:none; border:none;
+  text-align:left; padding:18px 0;
+  font-family:'Sarabun',sans-serif; font-size:15.5px;
+  font-weight:600; color:var(--tx-bright);
+  cursor:pointer; display:flex; justify-content:space-between;
+  align-items:center; gap:14px;
+}
+.faq-q:hover { color:var(--g2); }
+.faq-arr { font-size:16px; transition:transform .3s; flex-shrink:0; color:var(--g1); }
+.faq-item.open .faq-arr { transform:rotate(180deg); }
+.faq-ans { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+.faq-item.open .faq-ans { max-height:500px; }
+.faq-ans-in { padding-bottom:18px; font-size:15px; color:var(--tx-mid); line-height:1.85; }
+
+/* ===== FINAL CTA ===== */
+.final-sec {
+  background: linear-gradient(180deg, var(--w1) 0%, var(--t1) 100%);
+  padding:80px 20px; text-align:center;
+  position:relative; overflow:hidden;
+}
+.final-sec::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 60%, rgba(201,144,122,.06) 0%, transparent 65%);
+  pointer-events:none;
+}
+.final-inner { max-width:600px; margin:0 auto; position:relative; z-index:1; }
+.final-title {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(26px,5.5vw,42px);
+  font-weight:900; line-height:1.3; margin-bottom:14px;
+}
+.final-sub { color:var(--tx-mid); font-size:16px; margin-bottom:40px; line-height:1.75; }
+
+/* ===== FOOTER ===== */
+footer {
+  background:var(--w1);
+  border-top:1px solid var(--tx-faint);
+  padding:28px 20px; text-align:center;
+}
+footer p { color:var(--tx-dim); font-size:12.5px; line-height:1.9; }
+
+/* ===== EMOTIONAL / LOVE VISUAL TONE ===== */
+/* ใช้ serif font ให้รู้สึกเหมือน love letter ไม่ใช่ textbook */
+.love-text {
+  font-family:'Noto Serif Thai',serif;
+  font-style:italic;
+  color:var(--g2);
+  font-size:clamp(15px,3vw,18px);
+  line-height:1.9;
+}
+.heart-sep {
+  text-align:center;
+  color:var(--g1);
+  font-size:22px;
+  letter-spacing:10px;
+  margin:8px 0;
+  opacity:.5;
+}
+.warm-callout {
+  background: linear-gradient(135deg,
+    rgba(201,144,122,.10) 0%,
+    rgba(125,158,139,.08) 100%);
+  border:1px solid rgba(201,144,122,.2);
+  border-radius:16px;
+  padding:28px 32px;
+  margin:28px 0;
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(15px,3.2vw,18px);
+  line-height:1.9;
+  color:var(--tx-mid);
+}
+.warm-callout strong { color:var(--tx-bright); }
+.warm-callout em { color:var(--g2); font-style:italic; }
+
+/* Photo placeholder */
+.photo-placeholder {
+  width:88px; height:88px;
+  border-radius:50%;
+  border:2.5px solid var(--g1);
+  background: linear-gradient(135deg,var(--t2),var(--w3));
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  flex-shrink:0;
+  font-size:10px; color:var(--tx-dim);
+  text-align:center; line-height:1.4;
+}
+.photo-placeholder .ph-icon { font-size:28px; margin-bottom:3px; }
+
+/* April 29 Deadline box */
+.deadline-box {
+  display:flex; align-items:center; gap:14px;
+  background:rgba(201,144,122,.07);
+  border:1px solid rgba(201,144,122,.2);
+  border-radius:12px;
+  padding:16px 20px;
+  margin-bottom:22px;
+}
+.dl-icon { font-size:22px; flex-shrink:0; }
+.dl-title { font-weight:700; color:var(--g1); font-size:14.5px; margin-bottom:3px; }
+.dl-count { font-size:13px; color:var(--tx-dim); }
+.dl-lose { font-size:12.5px; color:var(--tx-mid); margin-top:4px; line-height:1.6; }
+
+/* Review section */
+.review-sec { background: var(--w2); }
+.review-card {
+  background:var(--w3);
+  border-radius:16px;
+  padding:32px;
+  position:relative; overflow:hidden;
+}
+.review-card::before {
+  content:'\201C';
+  position:absolute; top:8px; left:16px;
+  font-family:'Noto Serif Thai',serif;
+  font-size:100px; color:rgba(201,144,122,.08);
+  line-height:1; pointer-events:none;
+}
+.review-card p {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(15.5px,3.2vw,18px);
+  line-height:1.9; color:var(--tx-mid);
+  position:relative; z-index:1;
+}
+.review-card p em { color:var(--g2); font-style:italic; }
+.review-card p strong { color:var(--tx-bright); }
+.review-sig {
+  margin-top:20px; padding-top:16px;
+  border-top:1px solid var(--tx-faint);
+  display:flex; align-items:center; gap:12px;
+}
+
+/* ===== ANIMATIONS ===== */
+.fu { opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+.fu.vis { opacity:1; transform:translateY(0); }
+
+@media(max-width:640px){
+  .earlybird { flex-direction:column; gap:10px; }
+  .author-head { flex-direction:column; }
+  .price-body { padding:22px; }
+  .price-top { padding:28px 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<!-- Sticky CTA (mobile) -->
+<div class="sticky" id="stickyCta">
+  <div class="sticky-txt"><span style="color:var(--tx-bright);font-weight:600;">วิธีฟื้นความรัก</span> ที่ <span>"คนเก่ง"</span> มักมองข้าม · <span>596 บาท</span></div>
+  <button class="sticky-btn" onclick="scrollBuy()">รับเลย →</button>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero fu">
+<div class="inner">
+
+  <!-- Author identity row -->
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap;">
+    <img src="Wop ชุดกราวน์.jpg" alt="หมอวอป ณัฎฐชัย จิตแพทย์"
+      style="width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:center top;
+             border:2.5px solid var(--g1);flex-shrink:0;">
+    <div>
+      <div class="hero-badge" style="margin-bottom:6px;">
+        <span class="live"></span>
+        E-Book · หมอวอป ณัฎฐชัย จิตแพทย์
+      </div>
+      <div style="font-size:12.5px;color:var(--tx-dim);font-family:'Noto Serif Thai',serif;font-style:italic;">"การเปลี่ยนแปลงเกิดได้เสมอ — สำหรับทุกคน"</div>
+    </div>
+  </div>
+
+  <!-- Video clip — Vimeo embed (แนวตั้ง 9:16) -->
+  <div class="fu" style="margin-bottom:32px;">
+    <div style="
+      position:relative;
+      width:100%; max-width:340px; margin:0 auto;
+      aspect-ratio:9/16;
+      border-radius:16px; overflow:hidden;
+      background:#000;
+      border:1px solid rgba(201,144,122,.2);
+      box-shadow:0 8px 32px rgba(0,0,0,.5);
+    ">
+      <iframe
+        src="https://player.vimeo.com/video/1183729905?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+        allowfullscreen
+        title="คลิปแนะนำ Root of Love — หมอวอป"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;">
+      </iframe>
+    </div>
+      <!-- label ด้านล่าง (ไม่ต้องใช้แล้ว เพราะ Vimeo มี player ของตัวเอง) -->
+      <div style="
+        display:none;
+        position:absolute;bottom:16px;left:0;right:0;
+        text-align:center;
+        font-size:13px;color:rgba(250,252,255,0.75);
+        font-family:'Sarabun',sans-serif;
+        letter-spacing:0.04em;
+        pointer-events:none;
+      ">▶ กดดูคลิปแนะนำจากหมอวอป</div>
+  </div>
+
+  <!-- Scrolling patient voices — ช้าลงให้อ่านทัน -->
+  <div class="voices-wrap">
+    <div class="voices-track" id="voicesTrack" style="animation-duration:42s;">
+      <span class="voice-pill"><span class="vq">"</span>รู้ว่าตัวเองมากเกินไป แต่ทำไมหยุดไม่ได้เลย</span>
+      <span class="voice-pill"><span class="vq">"</span>ทะเลาะทีไร เขาแค่เงียบหรือเดินหนี รู้สึกเหมือนพูดกับกำแพง</span>
+      <span class="voice-pill"><span class="vq">"</span>หนูเผลอโวยวายตลอด...ไม่อยากดูเป็นตัวร้ายแบบนี้</span>
+      <span class="voice-pill"><span class="vq">"</span>เหนื่อยมากค่ะ เหมือนแบกทุกอย่างคนเดียว</span>
+      <span class="voice-pill"><span class="vq">"</span>เบื่อ...ทะเลาะเรื่องเดิมซ้ำๆ แล้ว</span>
+      <span class="voice-pill"><span class="vq">"</span>ทุกอย่างจืดชืดไปหมด เหมือนเขาเบื่อหนูแล้ว</span>
+      <span class="voice-pill"><span class="vq">"</span>ไม่รู้ผมเป็นอะไร...ระเบิดง่ายเวลาอยู่บ้านกับแฟน</span>
+      <span class="voice-pill"><span class="vq">"</span>เขาไม่เคยเข้าใจ...ปรึกษาอะไรก็เอาแต่สอน Emotional support ไม่มี</span>
+      <span class="voice-pill"><span class="vq">"</span>รักกันอยู่ แต่รู้สึกเหมือนอยู่ด้วยกันแต่ไม่ได้ยินกัน</span>
+      <span class="voice-pill"><span class="vq">"</span>นอกบ้านเขา Nice มากกับทุกคน แต่ในบ้านฉุนเฉียว ไม่แคร์คนในบ้านเลย</span>
+      <!-- duplicate for seamless loop -->
+      <span class="voice-pill"><span class="vq">"</span>รู้ว่าตัวเองมากเกินไป แต่ทำไมหยุดไม่ได้เลย</span>
+      <span class="voice-pill"><span class="vq">"</span>ทะเลาะทีไร เขาแค่เงียบหรือเดินหนี รู้สึกเหมือนพูดกับกำแพง</span>
+      <span class="voice-pill"><span class="vq">"</span>หนูเผลอโวยวายตลอด...ไม่อยากดูเป็นตัวร้ายแบบนี้</span>
+      <span class="voice-pill"><span class="vq">"</span>เหนื่อยมากค่ะ เหมือนแบกทุกอย่างคนเดียว</span>
+      <span class="voice-pill"><span class="vq">"</span>เบื่อ...ทะเลาะเรื่องเดิมซ้ำๆ แล้ว</span>
+      <span class="voice-pill"><span class="vq">"</span>ทุกอย่างจืดชืดไปหมด เหมือนเขาเบื่อหนูแล้ว</span>
+      <span class="voice-pill"><span class="vq">"</span>ไม่รู้ผมเป็นอะไร...ระเบิดง่ายเวลาอยู่บ้านกับแฟน</span>
+      <span class="voice-pill"><span class="vq">"</span>เขาไม่เคยเข้าใจ...ปรึกษาอะไรก็เอาแต่สอน Emotional support ไม่มี</span>
+      <span class="voice-pill"><span class="vq">"</span>รักกันอยู่ แต่รู้สึกเหมือนอยู่ด้วยกันแต่ไม่ได้ยินกัน</span>
+      <span class="voice-pill"><span class="vq">"</span>นอกบ้านเขา Nice มากกับทุกคน แต่ในบ้านฉุนเฉียว ไม่แคร์คนในบ้านเลย</span>
+    </div>
+  </div>
+
+  <h1 class="hero-h1">
+    ทะเลาะซ้ำๆ ไม่ใช่ความรักน้อยลง<br>
+    <span class="gold">แต่มีวงจรที่ล็อคคุณไว้</span><br>
+    <span style="font-size:clamp(20px,4vw,34px);font-weight:700;color:var(--tx-bright);">มันมีชื่อเรียกและพัฒนาได้</span>
+  </h1>
+
+  <p class="hero-sub">
+    คู่มือจากจิตแพทย์ที่เจอเรื่องนี้มาตลอดในห้องบำบัด — <strong>อ่านจบใน 1–3 ชั่วโมง</strong><br>
+    เห็นรากที่แท้จริงของวงจรนี้ได้เลย โดยไม่ต้องรอให้แฟนมาด้วย
+  </p>
+
+  <!-- "คนเก่ง แค่ไม่รู้" callout -->
+  <div style="background:rgba(201,144,122,.08);border-left:3px solid var(--g1);border-radius:0 10px 10px 0;padding:13px 18px;margin-bottom:20px;margin-top:4px;">
+    <div style="font-family:'Noto Serif Thai',serif;font-size:clamp(14px,3.5vw,17px);font-weight:700;color:var(--tx-bright);line-height:1.5;">คุณไม่ได้พลาด — คุณแค่<span style="color:var(--g1);">ยังไม่รู้ว่ารากอยู่ที่ไหน</span></div>
+    <div style="font-size:13.5px;color:var(--tx-mid);margin-top:4px;line-height:1.65;">คนเก่งส่วนใหญ่ที่มาหาผม ไม่ได้ขาดความพยายาม — แค่ยังไม่มีใครบอกว่าต้องแก้ที่ตรงไหน</div>
+  </div>
+
+  <!-- Book cover + title -->
+  <div style="display:flex;align-items:center;gap:22px;background:rgba(255,255,255,.04);border:1px solid rgba(201,144,122,.18);border-radius:16px;padding:20px 22px;margin-bottom:24px;flex-wrap:wrap;">
+    <img src="หน้าปก root of  ove.png" alt="Root of Love E-Book"
+      style="width:90px;height:auto;border-radius:8px;box-shadow:0 8px 28px rgba(0,0,0,.55),0 0 0 1px rgba(201,144,122,.2);flex-shrink:0;">
+    <div style="flex:1;min-width:180px;">
+      <div style="font-size:11px;color:var(--t5);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px;">E-Book · wLife Academy</div>
+      <div style="font-family:'Noto Serif Thai',serif;font-size:clamp(14px,3.8vw,19px);font-weight:800;color:var(--tx-bright);line-height:1.3;margin-bottom:6px;">วิธีฟื้นความรัก จากวงจรทะเลาะซ้ำๆ<br>ที่ <span style="color:var(--g1);">&ldquo;คนเก่ง&rdquo;</span> มักมองข้าม</div>
+      <div style="font-size:11px;color:var(--tx-dim);letter-spacing:0.4px;">Root of Love · wLife Academy</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--tx-dim);">โดย นพ. ณัฎฐชัย รำเพย (หมอวอป)</div>
+    </div>
+  </div>
+
+  <div class="deadline-box">
+    <div class="dl-icon">📅</div>
+    <div>
+      <div class="dl-title">Bonus หมด 29 เมษายน นี้</div>
+      <div class="dl-count" id="dlCount">กำลังคำนวณ...</div>
+      <div class="dl-lose">หลังจากนั้น ยังซื้อ E-Book ได้ในราคาเดิม — แต่ไม่ได้รับ PDF ประเมินสุขภาพความสัมพันธ์ มูลค่า 390 บาท อีกต่อไปแล้ว</div>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#buy" class="btn-gold" onclick="scrollBuy();return false;">
+      ✓ ใช่! ฉันอยากหยุดวงจรนี้ — รับ E-Book เลย
+    </a>
+    <button class="btn-ghost" onclick="document.getElementById('pain').scrollIntoView({behavior:'smooth'})">อ่านต่อก่อนก็ได้ ↓</button>
+    <div class="hero-trust">
+      <span>🛡️</span> รับประกันคืนเงิน 100% ถ้าอ่านจบแล้วไม่ได้อะไรเลย
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== PAIN ===== -->
+<section class="sec pain-sec fu" id="pain">
+<div class="inner">
+
+  <div class="badge"><div class="badge-dot"></div>เสียงที่ผมได้ยินตลอดในห้องบำบัด</div>
+  <h2 class="sec-title">คุณรู้จักความรู้สึก<span class="gold">นี้</span>ไหมครับ</h2>
+
+  <div class="wop-block">
+    <p>
+      ตลอดหลายปีที่ดูแลเคสคู่รักมา ผมได้ยินประโยคแบบนี้บ่อยมากครับ...<br><br>
+      <em>"หมอครับ รู้ว่าตัวเองมากเกินไป หึงเกินไป ระแวงเกินไป แต่ทำไมหยุดไม่ได้เลย"</em><br>
+      <em>"หมอคะ ทะเลาะทีไร เขาก็แค่เงียบหรือเดินหนี ไม่ใส่ใจเลย"</em><br>
+      <em>"รักกันอยู่ แต่รู้สึกเหมือนอยู่ด้วยกันแต่ไม่ได้ยินกัน"</em><br>
+      <em>"เบื่อแล้วค่ะหมอ...ทะเลาะเรื่องเดิมซ้ำๆ ทุกครั้ง"</em><br>
+      <em>"เขาไม่เคยเข้าใจเลย ปรึกษาอะไรก็ได้แต่คำสอน ไม่มี Emotional support"</em><br><br>
+      ถ้าคุณเคยอยู่ในสถานการณ์ใดสถานการณ์หนึ่ง ผมอยากบอกว่า <strong>มันปกติมากครับ</strong> — และที่สำคัญกว่านั้น
+    </p>
+    <div class="wop-sig">
+      <img src="Wop sitting.jpg" alt="หมอวอป" style="width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--g1);flex-shrink:0;">
+      <div>
+        <div class="wop-name">หมอวอป ณัฎฐชัย</div>
+        <div class="wop-role">จิตแพทย์ · ผู้ก่อตั้ง wLife Academy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hope moment -->
+  <div class="hope-line">
+    มันดีขึ้นได้นะ<br>
+    <span style="font-size:0.7em;font-weight:500;color:var(--tx-dim);">ถ้าเข้าใจรากที่แท้จริง</span>
+  </div>
+
+  <div class="pain-list">
+    <div class="pain-item">
+      <div class="px">✗</div>
+      <div class="pain-text">ทะเลาะกันแล้วคนหนึ่งโวยวาย อีกคนเงียบหรือเดินหนี — <strong>วนซ้ำแบบนี้ทุกครั้ง หยุดยังไงก็ไม่ได้</strong></div>
+    </div>
+    <div class="pain-item">
+      <div class="px">✗</div>
+      <div class="pain-text">อ่านหนังสือมาหลายเล่ม รู้ทฤษฎีหมด แต่<strong>พอทะเลาะจริงๆ สติหลุด เอาทฤษฎีมาใช้ไม่ทัน</strong></div>
+    </div>
+    <div class="pain-item">
+      <div class="px">✗</div>
+      <div class="pain-text"><strong>พยายามอยู่ฝ่ายเดียว</strong> รู้สึกว่าต้องแบกคนเดียว — "ทำไมต้องเป็นฉันที่พยายามคนเดียวตลอด?"</div>
+    </div>
+    <div class="pain-item">
+      <div class="px">✗</div>
+      <div class="pain-text">รักกันอยู่ แต่รู้สึกห่างเหิน — <strong>อยู่ด้วยกันแต่ไม่ได้ยินกัน</strong> ทุกอย่างจืดชืดไปหมด</div>
+    </div>
+  </div>
+
+  <!-- Permission slip callout -->
+  <div style="background:rgba(125,158,139,.07);border:1px solid rgba(125,158,139,.2);border-radius:14px;padding:18px 22px;margin-top:12px;">
+    <div style="font-family:'Noto Serif Thai',serif;font-size:clamp(15px,3.8vw,18px);font-weight:700;color:var(--t5);margin-bottom:5px;">คุณไม่ได้ไม่พยายาม ✓</div>
+    <div style="font-size:14.5px;color:var(--tx-mid);line-height:1.7;">คนที่ทะเลาะซ้ำๆ ไม่ใช่คนที่ไม่รัก ไม่ฉลาด หรือไม่พยายาม<br>ส่วนใหญ่เป็นคนเก่ง ที่ไม่เคยได้รับเครื่องมือที่ใช่ ณ เวลาที่ใช่ต่างหากครับ</div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== RELATIONSHIP CYCLE SECTION ===== -->
+<section class="sec fu" style="background:var(--w2);">
+<div class="inner">
+
+  <div class="badge"><div class="badge-dot"></div>วงจรที่ทำให้เรื่องเดิมวนซ้ำ</div>
+
+  <div class="wop-block" style="margin-bottom:28px;">
+    <p>
+      ผมดูแลเคสคู่รักมาหลายปีครับ และพบว่า <strong>คู่รักส่วนใหญ่ที่ทะเลาะซ้ำๆ ไม่ได้ขาดความรักกัน</strong> แต่ตกอยู่ในวงจรที่ถูกฝังไว้ตั้งแต่ก่อนที่ทั้งคู่จะมาเจอกันด้วยซ้ำ
+    </p>
+    <div class="wop-sig">
+      <img src="Wop sitting.jpg" alt="หมอวอป" style="width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--g1);flex-shrink:0;">
+      <div>
+        <div class="wop-name">หมอวอป ณัฎฐชัย</div>
+        <div class="wop-role">จิตแพทย์ · ผู้ก่อตั้ง wLife Academy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cycle diagram -->
+  <div style="background:var(--w3);border-radius:16px;padding:28px 24px 24px;margin-bottom:24px;border:1px solid rgba(255,255,255,.07);">
+
+    <!-- Label -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div style="font-size:11px;color:var(--tx-dim);letter-spacing:1.2px;text-transform:uppercase;">ตัวอย่างวงจร</div>
+      <div style="font-size:11px;color:var(--tx-dim);letter-spacing:.5px;">วงจรที่เกิดซ้ำๆ</div>
+    </div>
+
+    <!-- Box A -->
+    <div style="background:linear-gradient(135deg,rgba(130,50,50,.35),rgba(100,30,30,.2));border:1px solid rgba(200,80,80,.25);border-radius:12px;padding:18px 22px;margin-bottom:0;">
+      <div style="font-weight:700;font-size:15px;color:#f0a0a0;margin-bottom:5px;">ฝ่าย A ระเบิด / เรียกร้อง</div>
+      <div style="font-size:13px;color:var(--tx-dim);">"ทำไมไม่พูด ทำไมเงียบ"</div>
+    </div>
+
+    <!-- Connector pill -->
+    <div style="display:flex;justify-content:center;padding:8px 0;">
+      <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:4px 14px;font-size:12px;color:var(--tx-dim);">ฝ่าย B รู้สึกถูกกดดัน</span>
+    </div>
+
+    <!-- Box B -->
+    <div style="background:linear-gradient(135deg,rgba(20,45,80,.8),rgba(14,32,53,.6));border:1px solid rgba(100,140,200,.15);border-radius:12px;padding:18px 22px;margin-bottom:0;">
+      <div style="font-weight:700;font-size:15px;color:var(--tx-bright);margin-bottom:5px;">ฝ่าย B เงียบ / ถอยออก</div>
+      <div style="font-size:13px;color:var(--tx-dim);">"ขอเวลาคิดก่อน ไม่อยากทะเลาะ"</div>
+    </div>
+
+    <!-- Connector pill -->
+    <div style="display:flex;justify-content:center;padding:8px 0;">
+      <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:4px 14px;font-size:12px;color:var(--tx-dim);">ฝ่าย A รู้สึกทอดทิ้ง</span>
+    </div>
+
+    <!-- Result box -->
+    <div style="background:linear-gradient(135deg,rgba(201,144,122,.12),rgba(201,144,122,.04));border:1.5px dashed rgba(201,144,122,.28);border-radius:12px;padding:14px 20px;text-align:center;margin-bottom:18px;">
+      <div style="font-weight:700;font-size:15px;color:var(--g1);">ทั้งคู่เสียใจ... แต่ครั้งนี้มันเกิดซ้ำ</div>
+    </div>
+
+    <!-- Footnote -->
+    <div style="font-size:13px;color:var(--tx-dim);text-align:center;line-height:1.75;border-top:1px solid var(--tx-faint);padding-top:14px;">
+      ทั้งคู่กำลังทำสิ่งที่ร่างกายสั่งให้ทำ<br>
+      ไม่มีใครผิด — แค่ยังไม่รู้ว่าวงจรนี้คืออะไร
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:4px 0 4px;font-family:'Noto Serif Thai',serif;font-size:clamp(14px,3vw,17px);color:var(--tx-dim);">
+    พอเข้าใจตรงนี้ — ทุกอย่างเปลี่ยนครับ
+  </div>
+
+</div>
+</section>
+
+<!-- ===== DIVORCE STATS — WHY framing ===== -->
+<section class="sec stats-sec fu">
+<div class="inner">
+
+  <div class="badge"><div class="badge-dot"></div>ทำไมเรื่องนี้ถึงสำคัญ</div>
+  <h2 class="sec-title">ตัวเลขที่ผม<span class="gold">ไม่เคยชิน</span>กับมัน</h2>
+
+  <p class="stat-intro">
+    ทุกปี ผมเห็นตัวเลขนี้ออกมา แล้วก็นึกถึงผู้รับบริการทุกคน<br>
+    <strong>จำนวนคู่ที่จดทะเบียนหย่าในประเทศไทย:</strong>
+  </p>
+
+  <div class="stat-bars">
+    <div class="stat-row">
+      <span class="stat-yr">2564</span>
+      <div class="stat-track"><div class="stat-fill" style="width:75%">110,942 คู่</div></div>
+    </div>
+    <div class="stat-row">
+      <span class="stat-yr">2565</span>
+      <div class="stat-track"><div class="stat-fill" style="width:99%">146,159 คู่</div></div>
+    </div>
+    <div class="stat-row">
+      <span class="stat-yr">2566</span>
+      <div class="stat-track"><div class="stat-fill" style="width:100%">147,337 คู่</div></div>
+    </div>
+    <div class="stat-row">
+      <span class="stat-yr">2567</span>
+      <div class="stat-track"><div class="stat-fill" style="width:100%">147,621 คู่</div></div>
+    </div>
+    <div class="stat-row">
+      <span class="stat-yr">2568</span>
+      <div class="stat-track"><div class="stat-fill" style="width:94%">139,100 คู่</div></div>
+    </div>
+  </div>
+
+  <div class="stat-note">
+    ทุกตัวเลขคือเรื่องของคนจริงๆ ครับ — ไม่ใช่แค่สถิติ<br><br>
+    ผมดูแลอยู่ในห้องบำบัดทุกวัน วันหนึ่งช่วยได้แค่ไม่กี่คู่ <strong>เว้นแต่ผมจะแยกร่าง</strong><br><br>
+    นั่นแหละคือเหตุผลที่ผมเขียนหนังสือเล่มนี้ขึ้นมา — เพื่อให้ความรู้จากห้องบำบัดเดินทางออกไปถึงคนมากกว่านั้นครับ
+  </div>
+
+</div>
+</section>
+
+<!-- ===== PULL QUOTE ===== -->
+<section style="background:linear-gradient(135deg,var(--t1) 0%,var(--w1) 60%,var(--w2) 100%);padding:72px 20px;" class="fu">
+<div style="max-width:640px;margin:0 auto;text-align:center;">
+
+  <div style="font-family:'Noto Serif Thai',serif;font-size:clamp(16px,3.5vw,22px);color:var(--tx-mid);line-height:1.85;">
+    แค่รู้ว่ามีวงจรที่ทำงานอยู่ข้างใน<br>
+    <span style="color:var(--tx-bright);font-weight:600;">ที่คุณยังไม่รู้ว่ามันคืออะไร</span>
+  </div>
+
+  <div style="margin:24px auto;width:48px;height:2px;background:linear-gradient(90deg,transparent,var(--g1),transparent);"></div>
+
+  <div style="font-family:'Noto Serif Thai',serif;font-size:clamp(18px,4vw,26px);font-weight:700;line-height:1.7;color:var(--tx-bright);">
+    พอรู้แล้ว<br>
+    <span style="color:var(--t4);">ทุกอย่างจะเริ่มต่างออกไปเลย</span>
+  </div>
+
+  <div style="margin-top:28px;font-size:13px;color:var(--tx-dim);font-style:italic;">
+    — หมอวอป ณัฎฐชัย จิตแพทย์
+  </div>
+
+</div>
+</section>
+
+<!-- ===== WHY ===== -->
+<section class="sec why-sec fu" id="why">
+<div class="inner">
+
+  <div class="badge"><div class="badge-dot"></div>ทำไมถึงต่างจากทุกอย่างที่เคยลอง</div>
+  <h2 class="sec-title">แก้ที่<span class="gold">รากจริงๆ</span><br>ไม่ใช่แค่เทคนิค</h2>
+
+  <p class="sec-lead">
+    พอดูแลเคสคู่รักมาเยอะ ผมพบว่าคนที่ทะเลาะซ้ำๆ ส่วนใหญ่ไม่ได้ขาดความรัก แต่ขาดความเข้าใจว่าเกิดอะไรขึ้นในใจของตัวเองและอีกฝ่ายจริงๆ — <strong>ถ้าเข้าใจ แล้วจับเทคนิกต่อ ก็อาจหยุดมันได้</strong>
+  </p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon wi-t">🌿</div>
+      <div>
+        <div class="why-card-t">แก้จากรากข้างใน ผสมเทคนิกข้างนอก</div>
+        <div class="why-card-b">หลายคนศึกษามาหลายเทคนิก ไม่ว่าจะ I-Message, 5 Languages of Love แต่พอทะเลาะจริงก็ใช้ไม่ได้ เทคนิกไม่ดีนะ มาถูกทางแล้วครับ — แค่เติมรากในก่อน แล้วค่อยออกเป็นใบ (เทคนิก) ที่จะเด็ดมาใช้ได้ครับ</div>
+      </div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon wi-g">💬</div>
+      <div>
+        <div class="why-card-t">"มีแค่หนูที่สนใจแก้ เขาไม่อ่านหรอก"</div>
+        <div class="why-card-b">จริงที่สุดครับ ผู้รับบริการที่มาปรึกษาก็บอกแบบเดียวกันเลยครับ — <em>แค่เรารู้คนเดียว สนใจคนเดียว ก็สร้างความเปลี่ยนแปลงให้ทั้งวงจรได้</em> ทั้งเขาและเรา</div>
+      </div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon wi-w">🏥</div>
+      <div>
+        <div class="why-card-t">จากจิตแพทย์จริง</div>
+        <div class="why-card-b">ดูแลเคสคู่รักมามากในห้องบำบัด บวกความรู้ทางวิชาการจำนวนมากที่ย่อยมาตลอดหลายปี <em>สิ่งที่ผมต้องการคือลดปัญหาชีวิตคู่ในคนหมู่มาก ไม่ใช่แค่ตั้งรับในห้องตรวจได้วันละไม่กี่คู่</em></div>
+      </div>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon wi-t">📖</div>
+      <div>
+        <div class="why-card-t">มีช่วงร้อง "เฮ้ย" ซึ่ง น้ำตาคลอ อ้อ มีหวัง</div>
+        <div class="why-card-b">ออกแบบให้สนุก ไม่วิชาการ ไม่น่าเบื่อ — อ่านจบใน 1–3 ชั่วโมง แล้วแต่คน รู้ตัวอีกทีก็จบเล่มแล้ว</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== สิ่งที่จะไม่เจอในเล่มนี้ ===== -->
+<section class="sec notfound-sec fu">
+<div class="inner">
+
+  <div class="badge"><div class="badge-dot"></div>ความโปร่งใส</div>
+  <h2 class="sec-title">สิ่งที่คุณจะ<span class="gold">ไม่เจอ</span>ในเล่มนี้</h2>
+  <div class="warm-callout">
+    ถ้าคุณเคยลองมาหลายวิธีแล้วแต่ยังไม่ได้ผล — <strong>ไม่ใช่ความผิดของคุณเลยนะครับ</strong><br>
+    เล่มนี้จะเติมรากที่ขาดหายไป ให้มาเสริมกับวิธีต่างๆ ที่เคยรู้มา และต้องเริ่มจากตรงไหนก่อน
+  </div>
+
+  <div class="notfound-list">
+    <div class="nf-item">
+      <div class="nf-x">✗</div>
+      <div class="nf-text"><strong>ทฤษฎีเยอะ อ่านแล้วไม่รู้จะเริ่มตรงไหน</strong> — ทุกอย่างในเล่มนี้เน้นความเข้าใจ ไม่ใช่แค่ความรู้</div>
+    </div>
+    <div class="nf-item">
+      <div class="nf-x">✗</div>
+      <div class="nf-text"><strong>ต้องให้แฟนมาด้วยถึงจะได้ผล</strong> — <em>คนเดียวก็เริ่มได้เลยครับ</em> นั่นคือจุดที่เล่มนี้ออกแบบมา</div>
+    </div>
+    <div class="nf-item">
+      <div class="nf-x">✗</div>
+      <div class="nf-text"><strong>รู้สึกว่าตัวเองหรือแฟนเป็น "ตัวปัญหา"</strong> — ไม่มีการ Blame ใคร เข้าใจทั้งสองฝ่าย</div>
+    </div>
+<div class="nf-item">
+      <div class="nf-x">✗</div>
+      <div class="nf-text"><strong>ภาษาวิชาการ มึนไปหมด</strong> — ผมตั้งใจเขียนให้อ่านง่าย สนุก ไม่ต้องมีพื้นฐานด้านจิตวิทยา</div>
+    </div>
+    <div class="nf-item">
+      <div class="nf-x">✗</div>
+      <div class="nf-text"><strong>แนว cheer up สดใส โลกสวย</strong> — เน้นความจริง บริบทจริง แต่มีหวังเสมอครับ</div>
+    </div>
+    <div class="nf-item">
+      <div class="nf-x">✗</div>
+      <div class="nf-text"><strong>ตัวอย่างฝรั่ง ไม่ตรงกับชีวิตไทย</strong> — เขียนโดยจิตแพทย์ไทย จากเคสจริงในบริบทไทย</div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== OFFER ===== -->
+<section class="sec offer-sec fu">
+<div class="inner">
+
+  <div class="badge"><div class="badge-dot"></div>สิ่งที่คุณจะได้รับ</div>
+  <h2 class="sec-title">หลังอ่านจบ<br><span class="gold">คุณจะเข้าใจสิ่งเหล่านี้</span></h2>
+  <p class="sec-lead">ไม่ใช่แค่ "รู้" — แต่เข้าใจลึกพอที่จะเริ่มเปลี่ยนได้จริงๆ</p>
+
+  <div class="offer-card">
+    <div class="offer-head">
+      <span class="offer-badge ob-main">E-Book หลัก</span>
+      <span class="offer-title">Root of Love — ฟื้นความรักจากวงจรทะเลาะซ้ำๆ ที่คนเก่งมักมองข้าม</span>
+    </div>
+    <div class="offer-body">
+      <p style="color:var(--tx-dim);font-size:14px;margin-bottom:16px;">จากจิตแพทย์ที่นั่งฟังคู่รักในห้องบำบัดมาหลายปี — ออกแบบให้สนุก มีช่วงร้อง "เฮ้ย" น้ำตาคลอบ้าง และมีหวัง อ่านจบใน 1–3 ชั่วโมง แล้วแต่คน</p>
+      <ul class="check-list">
+        <li><span class="ck">✓</span> <strong>หยุดโทษตัวเองที่ "ทำไม่ได้สักที"</strong> — แล้วเริ่มเข้าใจว่าเกิดอะไรขึ้นจริงๆ ในวงจรนั้น</li>
+        <li><span class="ck">✓</span> <strong>รู้สึกเบาลง</strong> — เพราะมันไม่ใช่ความผิดของคุณ และมันมีที่มา</li>
+        <li><span class="ck">✓</span> <strong>เข้าใจอีกฝ่ายโดยไม่ต้องแก้ตัวให้ใคร</strong> — และไม่ต้องโทษใครด้วย</li>
+        <li><span class="ck">✓</span> <strong>ตอบได้แล้วว่า "รักกันอยู่ไหม?"</strong> — แบบที่รู้สึกได้จริงๆ ไม่ใช่แค่บอกตัวเอง</li>
+        <li><span class="ck">✓</span> <strong>เริ่มทำสิ่งเล็กๆ ได้เลย</strong> — แม้ยังไม่รู้ว่าอีกฝ่ายจะเปลี่ยนไหม</li>
+        <li><span class="ck">✓</span> <strong>รู้สึกว่า "ยังมีหวัง"</strong> — แบบที่ไม่ได้แค่พยายามบอกตัวเอง แต่เพราะเข้าใจจริงๆ แล้ว</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="offer-card">
+    <div class="offer-head">
+      <span class="offer-badge ob-urgent">Bonus · เฉพาะช่วง Promotion</span>
+      <span class="offer-title">PDF ประเมินสุขภาพความสัมพันธ์</span>
+      <span class="offer-val">มูลค่า 390</span>
+    </div>
+    <div class="offer-body">
+      <p>แบบประเมินที่ช่วยให้เห็นภาพความสัมพันธ์ตอนนี้ได้ชัดขึ้น — ทำก่อนอ่าน E-Book ยิ่งเข้าใจเนื้อหาลึกขึ้นทันที</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== BEFORE / AFTER ===== -->
+<section class="sec ba-sec fu">
+<div class="inner">
+  <div class="badge"><div class="badge-dot"></div>ก่อน vs หลัง</div>
+  <h2 class="sec-title">หลังอ่านจบ<span class="gold"> ชีวิตจะต่างยังไง</span></h2>
+
+  <div class="ba-grid">
+    <div class="ba-card ba-before">
+      <div class="ba-lbl">✗ ก่อน</div>
+      <ul class="ba-list">
+        <li><span>·</span> ทะเลาะซ้ำๆ ไม่รู้ต้นเหตุอยู่ที่ไหน</li>
+        <li><span>·</span> รู้สึกต้องแบกคนเดียว อีกฝ่ายไม่เข้าใจ</li>
+        <li><span>·</span> รู้ทฤษฎีแต่นำไปใช้ไม่ได้จริง</li>
+        <li><span>·</span> สงสัยว่าตัวเองหรือแฟนเป็นปัญหา</li>
+        <li><span>·</span> ไม่รู้จะแก้ได้ยังไงถ้าอีกฝ่ายไม่เปลี่ยน</li>
+      </ul>
+    </div>
+    <div class="ba-card ba-after">
+      <div class="ba-lbl">✓ หลัง</div>
+      <ul class="ba-list">
+        <li><span style="color:var(--t5)">✓</span> เห็นรากของวงจร เข้าใจแล้วว่าเกิดอะไรขึ้น</li>
+        <li><span style="color:var(--t5)">✓</span> รู้วิธีไม่ต้องแบก และรู้สึกโอเคจากภายใน</li>
+        <li><span style="color:var(--t5)">✓</span> เข้าใจตัวเอง เข้าใจคนรัก เข้าใจวงจร และเตรียมรื้อมาแก้</li>
+        <li><span style="color:var(--t5)">✓</span> รู้สึกมีความหวัง มีทิศทาง</li>
+        <li><span style="color:var(--t5)">✓</span> ความสัมพันธ์พัฒนาได้แม้ทำคนเดียว</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===== PRE-TARGET CTA ===== -->
+<section class="fu" style="background:var(--w1);padding:60px 20px;">
+<div style="max-width:640px;margin:0 auto;text-align:center;">
+
+  <div style="font-family:'Noto Serif Thai',serif;font-size:clamp(15px,3.2vw,19px);color:var(--tx-mid);line-height:1.9;margin-bottom:20px;">
+    ถ้าอ่านมาถึงตรงนี้แล้วรู้สึกว่า<br>
+    <strong style="color:var(--tx-bright);">"นี่คือเรื่องของฉัน"</strong><br>
+    ก็ไม่ต้องรออ่านต่อแล้วครับ
+  </div>
+
+  <div style="background:rgba(201,144,122,.08);border:1px solid rgba(201,144,122,.2);border-radius:14px;padding:20px 24px;margin-bottom:24px;font-family:'Noto Serif Thai',serif;font-size:clamp(15px,3vw,17.5px);color:var(--tx-mid);line-height:1.85;">
+    ใช่ — ฉันอยากเข้าใจว่าทำไมถึงวนอยู่กับเรื่องเดิมซ้ำๆ
+  </div>
+
+  <a href="#buy" class="btn-gold" style="max-width:420px;margin:0 auto;" onclick="scrollBuy();return false;">
+    รับ E-Book เลย — 596 บาท
+  </a>
+  <div style="margin-top:12px;font-size:12.5px;color:var(--tx-dim);">🛡️ รับประกันคืนเงิน 100% · อ่านจบใน 1–3 ชั่วโมง</div>
+
+</div>
+</section>
+
+<!-- ===== TARGET ===== -->
+<section class="sec target-sec fu">
+<div class="inner">
+  <div class="badge"><div class="badge-dot"></div>เล่มนี้เหมาะกับใคร</div>
+  <h2 class="sec-title"><span class="gold">เขียนมาเพื่อคุณ</span><br>ถ้าคุณเป็นแบบนี้</h2>
+
+  <p style="font-size:15px;color:var(--tx-mid);text-align:center;margin-bottom:26px;line-height:1.7;font-style:italic;">สำหรับคนที่เก่ง พยายามทุกทางมาแล้ว<br>แต่วงจรนี้ยังไม่ยอมหยุด — <span style="color:var(--g1);font-style:normal;font-weight:700;">เล่มนี้เขียนมาเพื่อคุณโดยตรงครับ</span></p>
+
+  <div class="target-grid">
+    <div class="target-card tc-yes">
+      <div class="tc-title">✓ เหมาะกับคุณถ้า...</div>
+      <ul class="tc-list">
+        <li><span>·</span> รักกันแต่ทะเลาะซ้ำๆ เรื่องเดิมไม่หยุด</li>
+        <li><span>·</span> รู้สึกเหนื่อยที่ต้องพยายามฝ่ายเดียว</li>
+        <li><span>·</span> อยากเข้าใจตัวเองและอีกฝ่ายมากขึ้น</li>
+        <li><span>·</span> อยากเปลี่ยนวงจรโดยไม่รอให้แฟนมาด้วย</li>
+        <li><span>·</span> เพิ่งเลิกกัน อยากเข้าใจว่าเกิดอะไรขึ้น</li>
+      </ul>
+    </div>
+    <div class="target-card tc-no">
+      <div class="tc-title">✗ ไม่เหมาะถ้า...</div>
+      <ul class="tc-list">
+        <li><span>·</span> ต้องการคำตอบสำเร็จรูปใช้ได้กับทุกคน</li>
+        <li><span>·</span> หวังว่าอ่านจบแล้วทุกอย่างดีขึ้นเองโดยไม่ต้องทำอะไร</li>
+        <li><span>·</span> ต้องการวิธีง้อแฟนหรือ "เอาชนะ" ในทะเลาะ</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===== AUTHOR ===== -->
+<section class="author-sec fu">
+<div class="inner">
+
+  <div class="badge" style="color:var(--t5)"><div class="badge-dot"></div>ทำไมผมถึงเขียนเล่มนี้</div>
+
+  <!-- Author photo — standing/teaching -->
+  <div style="margin-bottom:28px;border-radius:16px;overflow:hidden;max-height:360px;">
+    <img src="Wop standing 2.JPG" alt="หมอวอป กำลังสอน"
+      style="width:100%;object-fit:cover;object-position:center 15%;display:block;">
+  </div>
+
+  <div class="author-head">
+    <img src="Wop sitting.jpg" alt="หมอวอป ณัฎฐชัย"
+      style="width:62px;height:62px;border-radius:50%;object-fit:cover;object-position:center top;
+             border:2px solid var(--g1);flex-shrink:0;">
+    <div>
+      <div class="author-name">นพ. ณัฎฐชัย รำเพย (หมอวอป)</div>
+      <div class="author-role">จิตแพทย์ · ผู้ก่อตั้ง wLife Academy</div>
+    </div>
+  </div>
+
+  <div class="author-story">
+    <p>
+      มีคืนหนึ่งที่ผมนั่งอยู่กับเคสคู่รักคู่หนึ่งครับ ทั้งคู่นั่งอยู่ในห้องเดียวกัน แต่ไม่ได้มองหน้ากัน...<br>
+      เขาเงียบ เธอน้ำตาคลอ แล้วก็พูดว่า <em>"หมอคะ ทำไมคนที่รักกันถึงต้องทำร้ายกันซ้ำๆ แบบนี้"</em><br>
+      ผมไม่มีคำตอบง่ายๆ ให้เธอในวันนั้นครับ — แต่ผมรู้ว่ามันมีคำอธิบาย และถ้าเธอเข้าใจมัน ทุกอย่างจะต่างออกไป
+    </p>
+    <p>
+      ปัญหาคือ ความรู้นั้นอยู่ในห้องบำบัด ผมช่วยได้ทีละคู่ ทีละชั่วโมง
+      <strong>วันหนึ่งผมดูแลได้แค่ไม่กี่คู่ — เว้นแต่ผมจะแยกร่าง</strong>
+    </p>
+    <p>
+      อีกอย่างการมาปรึกษาผมเรื่องนี้ต้องคุยกันยาว อย่างน้อย 5–10 session++
+      ตีมูลค่ารวมๆ ก็ <em>27,000–70,000++ บาทขึ้นไป</em>
+      ซึ่งไม่ใช่ทุกคนที่พร้อมในส่วนนี้
+    </p>
+    <p>
+      เล่มนี้เลยเกิดขึ้นครับ — อัดแน่นด้วยสิ่งที่ผมเล่าในห้องบำบัดซ้ำๆ
+      บวกกับงานวิจัยที่ผมกิน (ศึกษา) เข้าไปตลอด
+      ออกแบบให้ <strong>สนุก อ่านไม่น่าเบื่อ มีช่วงร้อง "เฮ้ย" บางช่วง และมีหวังทุกหน้า</strong>
+    </p>
+    <p>
+      เพราะผมเชื่อว่า <em>คนที่รักกันอยู่ ไม่ควรต้องทนกันไปโดยไม่รู้ว่าเกิดอะไรขึ้น</em>
+    </p>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== REVIEW SECTION ===== -->
+<section class="sec review-sec fu">
+<div class="inner">
+
+  <div class="badge"><div class="badge-dot"></div>ความจริงใจ</div>
+  <h2 class="sec-title">เสียงจาก<span class="gold">ผู้อ่าน</span></h2>
+
+  <div class="review-card">
+    <p>
+      หนังสือเล่มนี้เพิ่งออกครับ ยังไม่มีรีวิวจากผู้อ่านเล่มนี้โดยตรง — แต่ผมมีสิ่งที่ดีกว่ารีวิวจะให้ครับ<br><br>
+      ในห้องบำบัด ผมเคยดูแลผู้หญิงคนหนึ่งที่มาหาผมพร้อมกับบอกว่าทะเลาะกับสามีเรื่องเดิมมา 4 ปีแล้ว ทุกอย่างที่เธอพยายาม ทั้ง I-Message ทั้งการนับ 1-10 ก่อนพูด ทั้งการอ่านหนังสือพัฒนาตัวเอง — ไม่มีอะไรช่วยได้เลยตอนทะเลาะจริงๆ<br><br>
+      เราใช้เวลาอยู่กับเรื่องหนึ่งครับ — วงจรที่เกิดขึ้นในร่างกายของเธอตอนที่เขาเริ่มเงียบ ไม่ใช่การสอนเทคนิค แต่เป็นการทำให้เธอเข้าใจว่าระบบประสาทของเธอกำลังทำงานอะไรอยู่ตอนนั้น และวงจรของชีวิตคู่ของเธอเกิด Pattern อะไรซ้ำๆ<br><br>
+      สามเดือนถัดมาเธอกลับมาบอกว่า <em>"หมอคะ ครั้งล่าสุดที่เขาเงียบ หนูหยุดได้เป็นครั้งแรกเลยค่ะ ไม่ใช่เพราะพยายามมากขึ้น แต่เพราะเข้าใจแล้วว่ามันไม่ใช่เรื่องของเขา"</em><br><br>
+      <strong>สิ่งที่เธอเรียนรู้ในห้องบำบัด คือสิ่งที่ผมจะเขียนลงในเล่มนี้ครับ</strong>
+    </p>
+    <div class="review-sig">
+      <img src="Wop sitting.jpg" alt="หมอวอป" style="width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--g1);flex-shrink:0;">
+      <div>
+        <div class="wop-name">หมอวอป ณัฎฐชัย</div>
+        <div class="wop-role">จิตแพทย์ · ผู้ก่อตั้ง wLife Academy</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="sec price-sec fu" id="buy">
+<div class="inner">
+
+  <div class="badge"><div class="badge-dot"></div>ราคาและสิ่งที่ได้รับ</div>
+  <h2 class="sec-title">ราคาเดียว<br><span class="gold">ได้ทั้งหมดเลย</span></h2>
+
+  <div style="text-align:center;margin-bottom:22px;padding:14px 18px;background:rgba(201,144,122,.06);border-radius:12px;border:1px solid rgba(201,144,122,.12);">
+    <div style="font-family:'Noto Serif Thai',serif;font-size:clamp(14px,3.5vw,16px);color:var(--g2);line-height:1.7;">คนที่เลือกอ่านเล่มนี้ ไม่ใช่คนที่ <em>"มีปัญหา"</em><br>แต่เป็นคนที่<span style="color:var(--tx-bright);font-weight:700;"> เก่งพอจะรู้ว่าตัวเองยังขาดอะไร</span> ครับ</div>
+  </div>
+
+  <div class="price-card">
+    <div class="price-top">
+      <img src="หน้าปก root of  ove.png" alt="Root of Love E-Book"
+        style="width:160px;height:auto;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.65),0 0 0 1px rgba(201,144,122,.3),0 4px 12px rgba(201,144,122,.15);margin-bottom:18px;display:block;margin-left:auto;margin-right:auto;">
+      <div class="price-label">คู่มือ E-Book</div>
+      <div class="price-name">Root of Love</div>
+      <div class="price-struck">ปรึกษาหมอ 1 ครั้ง ≈ 2,700–4,500 บาท</div>
+      <div class="price-main">596</div>
+      <div class="price-unit">บาท · E-Book + Bonus PDF</div>
+      <div class="price-save">ประหยัดกว่าปรึกษาหมอ 87%</div>
+    </div>
+
+    <div class="price-body">
+
+      <!-- Hormozi Price Anchor -->
+      <div class="anchor-box">
+        <div class="lbl">ลองเทียบดูก่อนตัดสินใจ</div>
+        <div class="anchor-row">
+          <span class="lside">❌ ปรึกษาจิตแพทย์ 1 session</span>
+          <span class="rside">2,700–4,500 บาท</span>
+        </div>
+        <div class="anchor-row">
+          <span class="lside">❌ Package 5–10 sessions (แก้จริงจัง)</span>
+          <span class="rside">27,000–45,000+ บาท</span>
+        </div>
+        <div class="anchor-highlight">
+          <span class="lside">✓ Root of Love — ความรู้เดียวกัน จากหมอคนเดียวกัน</span>
+          <span class="rside">596 บาท</span>
+        </div>
+        <div class="anchor-note">ผมเขียนเล่มนี้เพราะอยากให้ความรู้นี้เข้าถึงคนได้กว้างขึ้น — ไม่ใช่แค่คนที่มีงบมาปรึกษา</div>
+      </div>
+
+      <ul class="price-list">
+        <li><span class="ck2">✓</span><span><span class="hl">E-Book หลัก</span> Root of Love — ฟื้นความรักจากวงจรทะเลาะซ้ำๆ</span></li>
+        <li><span class="ck2">✓</span><span><span class="hl">Bonus</span> PDF ประเมินสุขภาพความสัมพันธ์ (มูลค่า 390) <em style="color:var(--g2);font-style:normal">เฉพาะช่วง Promo</em></span></li>
+        <li><span class="ck2">✓</span><span>ส่งทาง Email ทันที อ่านได้ทุก Device ไม่มีหมดอายุ</span></li>
+      </ul>
+
+      <!-- ═══ ORDER BUMP — checkbox ก่อนจ่ายเงิน ═══ -->
+      <div style="background:rgba(201,144,122,.07);border:2px dashed rgba(201,144,122,.45);border-radius:14px;padding:18px 20px;margin-bottom:16px;">
+        <label for="addonCheck" style="display:flex;align-items:flex-start;gap:14px;cursor:pointer;">
+          <input type="checkbox" id="addonCheck"
+            style="width:22px;height:22px;margin-top:2px;accent-color:var(--g1);flex-shrink:0;cursor:pointer;"
+            onchange="updateCheckoutTotal()">
+          <img src="หน้าปก Sex Talk cover.png" alt="คู่มือคุยกับแฟน"
+            style="width:65px;height:auto;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.5);flex-shrink:0;margin-top:2px;">
+          <div>
+            <div style="font-family:'Noto Serif Thai',serif;font-size:clamp(14px,3.5vw,16px);font-weight:800;color:var(--tx-bright);line-height:1.4;margin-bottom:5px;">"คู่มือคุยกับแฟน เมื่อรู้สึกว่าเรื่อง Sex มีปัญหา"</div>
+            <div style="font-size:13px;color:var(--tx-mid);line-height:1.6;margin-bottom:8px;">โดยหมอวอป · E-Book · ส่งพร้อมกัน ทาง Email ทันที</div>
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+              <span style="font-size:13px;color:var(--tx-dim);text-decoration:line-through;">ราคาปกติ 390 บาท</span>
+              <span style="background:var(--g1);color:var(--w1);font-weight:800;font-size:12.5px;padding:3px 12px;border-radius:20px;">เพิ่มแค่ 99 บาท</span>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <!-- Total display (อัปเดตเมื่อติ๊ก checkbox) -->
+      <div style="text-align:center;margin-bottom:16px;font-size:14px;color:var(--tx-mid);">
+        ยอดรวม: <strong id="totalDisplay" style="color:var(--tx-bright);font-size:17px;">596 บาท</strong>
+      </div>
+
+      <div class="deadline-box" style="margin-bottom:22px;">
+        <div class="dl-icon">📅</div>
+        <div>
+          <div class="dl-title">PDF ประเมินฯ ฟรี — หมด 29 เมษายน นี้</div>
+          <div class="dl-count" id="dlCount2">กำลังคำนวณ...</div>
+          <div class="dl-lose">หลังจากนั้นยังได้ E-Book เล่มนี้ในราคาเดิม แต่ไม่มีของแถม</div>
+        </div>
+      </div>
+
+      <button class="btn-buy" id="mainBuyBtn" onclick="startCheckout()">
+        ✓ ใช่! ฉันต้องการหยุดวงจรนี้ — รับ E-Book เลย
+      </button>
+
+      <div class="pay-icons">
+        <span class="pay-ic">💳 บัตรเครดิต</span>
+        <span class="pay-ic">🔵 Google Pay</span>
+        <span class="pay-ic">📱 PromptPay</span>
+      </div>
+
+      <div class="guar-box">
+        <div class="guar-ic">🛡️</div>
+        <div>
+          <div class="guar-title">รับประกันคืนเงิน 100%</div>
+          <div class="guar-text">อ่านจบแล้วรู้สึกว่าไม่ได้อะไรเลย ทักมาได้เลยครับ ผมคืนเงินให้เต็มจำนวน ไม่ถามเหตุผล ไม่โกรธกัน — ผมแบกรับความเสี่ยงตรงนี้ไว้เองครับ</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec faq-sec fu">
+<div class="inner">
+
+  <div class="badge"><div class="badge-dot"></div>คำถามที่พบบ่อย</div>
+  <h2 class="sec-title">คำตอบตรงๆ<br><span class="gold">ไม่อ้อมค้อม</span></h2>
+
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">แฟนไม่ยอมอ่านด้วย ยังมีประโยชน์ไหมคะ?<span class="faq-arr">↓</span></button>
+      <div class="faq-ans"><div class="faq-ans-in">มีประโยชน์มากเลยครับ เพราะเล่มนี้ออกแบบมาสำหรับ "คนที่อยากเปลี่ยน" ไม่ใช่ "คู่ที่ต้องเปลี่ยนพร้อมกัน" ถ้าเราเข้าใจวงจรและเริ่มค่อยๆ แกะวงจร อีกฝ่ายจะตอบสนองต่างออกไปเองครับ</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">ต่างจากที่รู้อยู่แล้วยังไงคะ? เช่น I-Message หรือวิธีคุยต่างๆ<span class="faq-arr">↓</span></button>
+      <div class="faq-ans"><div class="faq-ans-in">เทคนิคพวกนั้นดีครับ แต่คนส่วนใหญ่พบว่าพอทะเลาะจริงก็ใช้ไม่ได้ เพราะมันไม่ได้แก้ที่ต้นเหตุ Root of Love อธิบายว่าทำไมวงจรถึงเกิด — พอเข้าใจรากแล้ว เทคนิกก็จะใช้ได้ผลมากขึ้นครับ</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">เพิ่งเลิกกัน อ่านได้ไหมคะ?<span class="faq-arr">↓</span></button>
+      <div class="faq-ans"><div class="faq-ans-in">ได้ครับ และผมบอกเลยว่า — จังหวะนี้แหละที่ดีที่สุดในการอ่านเล่มนี้<br><br>เพราะตอนที่เพิ่งเลิกกัน ใจเปิดรับการเรียนรู้มากที่สุด คุณจะได้เข้าใจว่าเกิดอะไรขึ้นจริงๆ แทนที่จะวนอยู่กับคำถามว่า "ผิดพลาดตรงไหน?"<br><br>และที่สำคัญกว่านั้น — เมื่อเข้าใจวงจรแล้ว คุณจะป้องกันไม่ให้มันเกิดซ้ำในความสัมพันธ์ถัดไปได้ด้วยครับ<br><br>มูฟออนแบบเข้าใจ — ต่างจากมูฟออนแบบลืมๆ ไปมากครับ</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">ซื้อแล้วได้รับ E-Book ทางไหนคะ?<span class="faq-arr">↓</span></button>
+      <div class="faq-ans"><div class="faq-ans-in">ส่งทาง Email ทันทีหลังชำระเงินครับ อ่านได้บน Smartphone, Tablet, คอมพิวเตอร์ ทุก Device ที่เปิด PDF ได้ ไม่มีหมดอายุ</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">ถ้าอ่านแล้วแต่ยังไม่ดีขึ้น เป็นไปได้ไหม?<span class="faq-arr">↓</span></button>
+      <div class="faq-ans"><div class="faq-ans-in">เป็นไปได้ครับ และผมอยากพูดตรงๆ ตรงนี้<br><br>หนังสือเล่มนี้ไม่ใช่การบำบัด และไม่ได้ทดแทนการพูดคุยกับผู้เชี่ยวชาญ สิ่งที่มันทำได้คือช่วยให้คุณเข้าใจว่าเกิดอะไรขึ้น ทั้งในตัวคุณและในความสัมพันธ์<br><br>ผลลัพธ์ขึ้นอยู่กับแต่ละคนด้วยครับ บางคนอ่านแล้วอะไรหลายอย่างคลิกทันที บางคนต้องใช้เวลา แต่ผมเชื่อว่าการรู้มากขึ้น — ไม่เคยทำให้แย่ลงครับ<br><br>และถ้าอ่านจบแล้วรู้สึกว่าไม่ได้อะไรเลย ทักมาได้เลยครับ ผมคืนเงินให้เต็มจำนวน</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">ไม่พอใจขอคืนเงินได้ไหมคะ?<span class="faq-arr">↓</span></button>
+      <div class="faq-ans"><div class="faq-ans-in">ได้เลยครับ อ่านจบแล้วรู้สึกว่าไม่ได้อะไรเลย ทักมาบอกผมได้เลย คืนเงินเต็มจำนวน 100% ไม่ถามเหตุผล ไม่โกรธกันครับ</div></div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-sec fu">
+<div class="final-inner">
+  <img src="หน้าปก root of  ove.png" alt="Root of Love E-Book"
+    style="width:110px;height:auto;border-radius:12px;box-shadow:0 10px 35px rgba(0,0,0,.6),0 0 0 1px rgba(201,144,122,.2);margin:0 auto 22px;display:block;">
+  <h2 class="final-title">
+    อยากให้หยุดทะเลาะซ้ำๆ<br>กันเสียทีครับ
+    <span class="gold"><br>เริ่มจากการเข้าใจ</span>
+  </h2>
+  <p class="final-sub">
+    ไม่ต้องรอให้แฟนมาด้วย ไม่ต้องรอให้ทุกอย่างพร้อม<br>
+    แค่เริ่มเข้าใจ — วงจรจะเริ่มดีขึ้นได้เลยครับ
+  </p>
+  <a href="#buy" class="btn-gold" style="max-width:480px;margin:0 auto;" onclick="scrollBuy();return false;">
+    ✓ รับ Root of Love เลย — 596 บาท
+  </a>
+  <div class="hero-trust" style="justify-content:center;margin-top:18px;">
+    <span>🛡️</span> รับประกันคืนเงิน 100% · ส่งทาง Email ทันที
+  </div>
+</div>
+</section>
+
+<footer>
+  <p>
+    Root of Love — E-Book โดย นพ. ณัฎฐชัย รำเพย (หมอวอป)<br>
+    wLife Academy · "การเปลี่ยนแปลงเกิดได้เสมอ — สำหรับทุกคน"<br>
+    © 2026 wLife Academy
+  </p>
+</footer>
+
+<script>
+// Real April 29 deadline countdown
+function updateDeadline(){
+  const end = new Date('2026-04-29T23:59:59+07:00');
+  const now = new Date();
+  const diff = end - now;
+  const els = ['dlCount','dlCount2'];
+  if(diff <= 0){
+    els.forEach(id=>{ const e=document.getElementById(id); if(e) e.textContent='Bonus หมดแล้วครับ'; });
+    return;
+  }
+  const days = Math.floor(diff/86400000);
+  const hrs  = Math.floor((diff%86400000)/3600000);
+  const mins = Math.floor((diff%3600000)/60000);
+  const txt  = days > 0
+    ? `เหลืออีก ${days} วัน ${hrs} ชั่วโมง ${mins} นาที`
+    : `เหลืออีก ${hrs} ชั่วโมง ${mins} นาที`;
+  els.forEach(id=>{ const e=document.getElementById(id); if(e) e.textContent=txt; });
+  setTimeout(updateDeadline, 60000);
+}
+updateDeadline();
+
+// Sticky CTA
+window.addEventListener('scroll',()=>{
+  document.getElementById('stickyCta').classList.toggle('on', window.scrollY>500);
+});
+
+function scrollBuy(){
+  const btn = document.getElementById('mainBuyBtn');
+  if(btn){ btn.scrollIntoView({behavior:'smooth', block:'center'}); }
+  else { document.getElementById('buy').scrollIntoView({behavior:'smooth'}); }
+}
+
+// ─── Stripe Checkout ──────────────────────────────────────────
+let addonSelected = false;
+
+function updateCheckoutTotal(){
+  addonSelected = document.getElementById('addonCheck').checked;
+  const total = addonSelected ? 695 : 596;
+  const el = document.getElementById('totalDisplay');
+  if(el) el.textContent = total.toLocaleString('th-TH') + ' บาท';
+}
+
+async function startCheckout(){
+  const btn = document.getElementById('mainBuyBtn');
+  if(btn){ btn.textContent = '⏳ กำลังเปิด checkout...'; btn.disabled = true; btn.style.opacity = '0.7'; }
+
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ addAddon: addonSelected }),
+    });
+    if(!res.ok) throw new Error('server error');
+    const { url } = await res.json();
+    window.location.href = url;
+  } catch(err) {
+    console.error('Checkout error:', err);
+    if(btn){ btn.textContent = '✓ ใช่! ฉันต้องการหยุดวงจรนี้ — รับ E-Book เลย'; btn.disabled = false; btn.style.opacity = '1'; }
+    alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งนะคะ 🙏');
+  }
+}
+
+// FAQ accordion
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(e=>e.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+
+// Fade up on scroll
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});
+},{threshold:.06});
+document.querySelectorAll('.fu').forEach(el=>io.observe(el));
+
+// Animate stat bars on scroll
+const statObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.stat-fill').forEach(bar=>{
+        const w = bar.style.width;
+        bar.style.width='0';
+        setTimeout(()=>{ bar.style.width=w; },100);
+      });
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:.2});
+const sb = document.querySelector('.stat-bars');
+if(sb) statObs.observe(sb);
+</script>
+</body>
+</html>

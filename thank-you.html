@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ขอบคุณที่ไว้ใจ — Root of Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Noto+Serif+Thai:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --w1: #0A1628;
+  --w2: #0F2035;
+  --w3: #152843;
+  --w4: #1E3455;
+  --w5: #2A4570;
+  --g1: #C9907A;
+  --g2: #D4A898;
+  --g3: #DFBAB0;
+  --g4: #EDD5CE;
+  --g5: #FAF0EE;
+  --t1: #2D4D3E;
+  --t2: #3D6450;
+  --t3: #527A65;
+  --t4: #7D9E8B;
+  --t5: #A8C5B5;
+  --line-green: #06C755;
+  --tx-bright: #FAFCFF;
+  --tx-mid: rgba(250,252,255,0.72);
+  --tx-dim: rgba(250,252,255,0.42);
+  --tx-faint: rgba(250,252,255,0.14);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:'Sarabun',sans-serif;
+  background: var(--w1);
+  color: var(--tx-bright);
+  font-size:17px;
+  line-height:1.85;
+  overflow-x:hidden;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* ─── Top rainbow bar ─── */
+.top-bar {
+  position:fixed; top:0; left:0; right:0;
+  height:3px;
+  background: linear-gradient(90deg, var(--t3) 0%, var(--g1) 40%, var(--w4) 70%, var(--t3) 100%);
+  background-size:200%;
+  animation: bar-flow 5s linear infinite;
+  z-index:999;
+}
+@keyframes bar-flow { to { background-position:200% 0; } }
+
+body::before {
+  content:'';
+  position:fixed; top:-20%; left:50%; transform:translateX(-50%);
+  width:700px; height:700px;
+  background: radial-gradient(circle, rgba(201,144,122,0.07) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+/* ─── Main card ─── */
+.card {
+  width:min(560px, calc(100vw - 32px));
+  background: var(--w2);
+  border: 1px solid rgba(201,144,122,0.18);
+  border-radius:24px;
+  padding:48px 40px;
+  text-align:center;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  animation: fade-up 0.7s ease both;
+  margin: 72px auto 0;
+}
+@keyframes fade-up {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ─── Checkmark circle ─── */
+.check-wrap {
+  width:80px; height:80px;
+  background: linear-gradient(135deg, var(--t2), var(--t3));
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 28px;
+  box-shadow: 0 0 0 12px rgba(82,122,101,0.12), 0 0 0 24px rgba(82,122,101,0.06);
+  animation: pop 0.5s 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes pop {
+  from { transform:scale(0.4); opacity:0; }
+  to   { transform:scale(1); opacity:1; }
+}
+.check-wrap svg { width:36px; height:36px; }
+
+/* ─── Typography ─── */
+.thank-label {
+  font-size:12.5px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--t4);
+  font-weight:600;
+  margin-bottom:10px;
+}
+.thank-title {
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(22px,5vw,30px);
+  font-weight:700;
+  color:var(--tx-bright);
+  line-height:1.4;
+  margin-bottom:20px;
+}
+
+/* ─── Wop personal message ─── */
+.wop-msg {
+  background: rgba(45,77,62,0.18);
+  border:1px solid rgba(82,122,101,0.2);
+  border-radius:16px;
+  padding:22px 24px;
+  text-align:left;
+  margin-bottom:28px;
+  position:relative;
+}
+.wop-msg::before {
+  content:'"';
+  position:absolute;
+  top:-8px; left:18px;
+  font-size:52px;
+  color:var(--t3);
+  font-family:'Noto Serif Thai',serif;
+  line-height:1;
+  opacity:0.5;
+}
+.wop-msg p {
+  font-size:16px;
+  color:var(--tx-mid);
+  line-height:1.85;
+  padding-top:12px;
+}
+.wop-msg p strong { color:var(--g2); font-weight:600; }
+.wop-attr {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid var(--tx-faint);
+}
+.wop-avatar {
+  width:36px; height:36px;
+  border-radius:50%;
+  background: linear-gradient(135deg,var(--g1),var(--g3));
+  display:flex; align-items:center; justify-content:center;
+  font-size:15px;
+  flex-shrink:0;
+}
+.wop-name { font-size:14px; color:var(--tx-dim); }
+.wop-name strong { color:var(--g2); display:block; font-size:15px; }
+
+/* ─── Email badge ─── */
+.email-badge {
+  background: rgba(201,144,122,0.08);
+  border: 1px solid rgba(201,144,122,0.2);
+  border-radius:12px;
+  padding:16px 20px;
+  margin-bottom:24px;
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  text-align:left;
+}
+.email-icon {
+  width:40px; height:40px; flex-shrink:0;
+  background: rgba(201,144,122,0.12);
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  margin-top:2px;
+}
+.email-icon svg { width:20px; height:20px; }
+.email-text .elabel {
+  font-size:11.5px;
+  color:var(--tx-dim);
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.email-text .emsg {
+  font-size:15px;
+  color:var(--tx-mid);
+  line-height:1.65;
+}
+.email-text .emsg strong { color:var(--g2); }
+
+/* ─── Steps ─── */
+.steps {
+  list-style:none;
+  text-align:left;
+  margin-bottom:28px;
+}
+.steps li {
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding:11px 0;
+  border-bottom:1px solid var(--tx-faint);
+  font-size:15px;
+  color:var(--tx-mid);
+  line-height:1.6;
+}
+.steps li:last-child { border-bottom:none; }
+.step-num {
+  width:26px; height:26px; flex-shrink:0;
+  background: rgba(201,144,122,0.13);
+  color:var(--g2);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px;
+  font-weight:700;
+  margin-top:2px;
+}
+
+/* ─── Divider ─── */
+.divider {
+  border:none;
+  border-top:1px solid var(--tx-faint);
+  margin:28px 0;
+}
+
+/* ─── LINE section ─── */
+.line-section {
+  background: rgba(6,199,85,0.07);
+  border:1px solid rgba(6,199,85,0.2);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:28px;
+}
+.line-header {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+  justify-content:center;
+}
+.line-logo {
+  width:32px; height:32px;
+  background: var(--line-green);
+  border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+}
+.line-logo svg { width:20px; height:20px; }
+.line-title {
+  font-family:'Noto Serif Thai',serif;
+  font-size:17px;
+  font-weight:700;
+  color:var(--tx-bright);
+}
+.line-sub {
+  font-size:14.5px;
+  color:var(--tx-mid);
+  line-height:1.75;
+  margin-bottom:20px;
+}
+.line-sub strong { color:#4dd98a; }
+
+.line-content {
+  display:flex;
+  align-items:center;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.line-qr {
+  background:white;
+  border-radius:12px;
+  padding:8px;
+  width:120px; height:120px;
+  flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+}
+.line-qr img {
+  width:100%; height:100%;
+  border-radius:6px;
+  display:block;
+}
+.line-right {
+  text-align:left;
+}
+.line-right p {
+  font-size:14px;
+  color:var(--tx-dim);
+  margin-bottom:12px;
+  line-height:1.6;
+}
+.btn-line {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 24px;
+  background: var(--line-green);
+  color:#fff;
+  border-radius:50px;
+  font-family:'Sarabun',sans-serif;
+  font-size:15px;
+  font-weight:700;
+  text-decoration:none;
+  transition:all 0.2s ease;
+  box-shadow:0 4px 14px rgba(6,199,85,0.3);
+}
+.btn-line:hover {
+  background:#05b04d;
+  transform:translateY(-1px);
+  box-shadow:0 6px 20px rgba(6,199,85,0.4);
+}
+.btn-line svg { width:18px; height:18px; }
+
+/* ─── Back button ─── */
+.btn-back {
+  display:inline-block;
+  padding:13px 30px;
+  background: var(--w3);
+  border:1px solid rgba(201,144,122,0.2);
+  color:var(--tx-mid);
+  border-radius:50px;
+  font-family:'Sarabun',sans-serif;
+  font-size:15px;
+  font-weight:500;
+  text-decoration:none;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+.btn-back:hover {
+  background:var(--w4);
+  color:var(--tx-bright);
+  border-color:rgba(201,144,122,0.35);
+}
+
+/* ─── Footer ─── */
+.footer-note {
+  font-size:13px;
+  color:var(--tx-dim);
+  margin-top:20px;
+  padding-bottom:48px;
+  text-align:center;
+}
+.footer-note a {
+  color:var(--g2);
+  text-decoration:none;
+}
+.footer-note a:hover { text-decoration:underline; }
+
+@media(max-width:480px){
+  .card { padding:36px 20px; }
+  .line-content { flex-direction:column; align-items:center; }
+  .line-right { text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<div class="card">
+
+  <!-- Checkmark -->
+  <div class="check-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
+  </div>
+
+  <!-- Title -->
+  <div class="thank-label">ชำระเงินสำเร็จแล้ว</div>
+  <h1 class="thank-title">ยินดีต้อนรับสู่ Root of Love 🌱</h1>
+
+  <!-- Wop personal message -->
+  <div class="wop-msg">
+    <p>
+      ผมดีใจจริงๆ ที่คุณเลือกหยิบหนังสือเล่มนี้ขึ้นมา<br><br>
+      หลายคนรู้ว่ามีบางอย่างผิดปกติในความสัมพันธ์ แต่ไม่รู้จะเริ่มต้นที่ไหน
+      คุณเพิ่งเดินก้าวแรกที่<strong>สำคัญที่สุด</strong>แล้วครับ<br><br>
+      อ่านให้จบ แล้วลองนำไปใช้จริงสักหนึ่งอย่างดูนะ
+    </p>
+    <div class="wop-attr">
+      <div class="wop-avatar">🩺</div>
+      <div class="wop-name">
+        <strong>Dino (วอป ณัฎฐชัย รำเพย)</strong>
+        wLife Academy
+      </div>
+    </div>
+  </div>
+
+  <!-- Email instruction -->
+  <div class="email-badge">
+    <div class="email-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--g1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+    </div>
+    <div class="email-text">
+      <div class="elabel">E-Book จะส่งไปที่</div>
+      <div class="emsg">
+        <strong>Email ที่ใช้ชำระเงิน</strong> ภายใน <strong>5–10 นาที</strong><br>
+        ถ้าไม่เจอ เช็ก <em>Junk / Spam</em> ด้วยนะครับ
+      </div>
+    </div>
+  </div>
+
+  <!-- Steps -->
+  <ul class="steps">
+    <li>
+      <div class="step-num">1</div>
+      <span>เปิด Email ที่ใช้จ่ายเงิน — มองหาอีเมลจาก wLife Academy</span>
+    </li>
+    <li>
+      <div class="step-num">2</div>
+      <span>คลิก Link ดาวน์โหลด PDF — บันทึกเก็บไว้ในเครื่องได้เลย</span>
+    </li>
+    <li>
+      <div class="step-num">3</div>
+      <span>เริ่มอ่าน — ใช้เวลาแค่ 2 ชั่วโมง แต่เปลี่ยนวิธีมองความสัมพันธ์ทั้งหมด</span>
+    </li>
+  </ul>
+
+  <hr class="divider">
+
+  <!-- LINE section -->
+  <div class="line-section">
+    <div class="line-header">
+      <div class="line-logo">
+        <!-- LINE icon -->
+        <svg viewBox="0 0 24 24" fill="white">
+          <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+        </svg>
+      </div>
+      <div class="line-title">มาคุยกันต่อบน LINE ได้เลย</div>
+    </div>
+    <p class="line-sub">
+      มีคำถามเรื่องหนังสือ? อยากสอบถามเพิ่มเติม หรือแค่อยากติดตาม<strong>ข่าวสารและ content จากผม</strong> — แอดมาได้นะครับ
+    </p>
+    <div class="line-content">
+      <div class="line-qr">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Flin.ee%2FnZxMqtF&bgcolor=ffffff&color=000000&qzone=1&format=png"
+          alt="QR Code LINE หมอวอป"
+          loading="lazy"
+        >
+      </div>
+      <div class="line-right">
+        <p>สแกน QR หรือกดปุ่มด้านล่าง<br>เพื่อแอด LINE หมอวอปได้เลยครับ</p>
+        <a href="https://lin.ee/nZxMqtF" target="_blank" rel="noopener" class="btn-line">
+          <svg viewBox="0 0 24 24" fill="white">
+            <path d="M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+          </svg>
+          แอด LINE wLife
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back button -->
+  <a href="/" class="btn-back">← กลับหน้าหลัก</a>
+
+</div>
+
+<div class="footer-note">
+  ไม่ได้รับ E-Book ภายใน 15 นาที? ติดต่อได้ที่
+  <a href="mailto:hello@wlifeacademy.com">hello@wlifeacademy.com</a>
+</div>
+
+</body>
+</html>
