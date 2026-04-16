@@ -1592,24 +1592,14 @@ function updateCheckoutTotal(){
   if(el) el.textContent = total.toLocaleString('th-TH') + ' บาท';
 }
 
-async function startCheckout(){
+function startCheckout(){
+  const EBOOK_URL  = 'https://buy.stripe.com/8x214g0ch3yJ8Qi3FM6Zy00';
+  const BUNDLE_URL = 'https://buy.stripe.com/5kQ14ggbf1qBd6yb8e6Zy01';
+
   const btn = document.getElementById('mainBuyBtn');
   if(btn){ btn.textContent = '⏳ กำลังเปิด checkout...'; btn.disabled = true; btn.style.opacity = '0.7'; }
 
-  try {
-    const res = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ addAddon: addonSelected }),
-    });
-    if(!res.ok) throw new Error('server error');
-    const { url } = await res.json();
-    window.location.href = url;
-  } catch(err) {
-    console.error('Checkout error:', err);
-    if(btn){ btn.textContent = '✓ ใช่! ฉันต้องการหยุดวงจรนี้ — รับ E-Book เลย'; btn.disabled = false; btn.style.opacity = '1'; }
-    alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งนะคะ 🙏');
-  }
+  window.location.href = addonSelected ? BUNDLE_URL : EBOOK_URL;
 }
 
 // FAQ accordion
